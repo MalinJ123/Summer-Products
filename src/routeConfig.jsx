@@ -11,10 +11,10 @@ const router = createHashRouter([
 		element: <Root/>,
 		children: [
 			{
-				path: 'home',
+				path: '',
 				element: <Home/>
 			},
-			{
+			{	//path måste heta samma som navlink i roots
 				path: 'products',
 				element: <Products/>
 			},

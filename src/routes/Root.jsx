@@ -7,13 +7,13 @@ const Root = () => {
 	
 		<header>
 			<NavLink to="/">Home</NavLink>
-			<NavLink to="/product"> Products</NavLink>
-			<NavLink to="/error"> This dose not Exist</NavLink>
+			<NavLink to="products"> Products</NavLink>
+			<NavLink to="error"> Error</NavLink>
 		</header>
 		<main>
-			{/* <Outlet/> */}
+			<Outlet/>
 		</main>
-		root!
+	
 		</>
 	)
 }

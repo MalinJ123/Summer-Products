@@ -3,9 +3,9 @@
 const Products = () => {
 
 	return (
-		<section>
-			PRODUkts
-		</section>
+		<>
+		<h2>PRODUKTER</h2>
+		</>
 	)
 } 
 export default Products
