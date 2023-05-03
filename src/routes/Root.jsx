@@ -5,16 +5,15 @@ const Root = () => {
 	return (
 		<>
 	
-		<header>
-			<NavLink to="/">Home</NavLink>
-			<NavLink to="products"> Products</NavLink>
-			<NavLink to="error"> Error</NavLink>
-			<NavLink to="/details/1">Detaljer</NavLink>
+		<header className="header-body" >
+			<NavLink className="header link" to="/">Home</NavLink>
+			<NavLink className="products link"  to="products"> Products</NavLink>
+			<NavLink className="error link"  to="error"> Error</NavLink>
+			<NavLink className="details link"  to="/details/1">Detaljer</NavLink>
 		</header>
 		<main>
 			<Outlet/>
-		</main>
-	
+		</main>	
 		</>
 	)
 }
