@@ -23,6 +23,7 @@
  .products-pic{
 	max-width:13em;
 	max-height: 15em;
+	margin-bottom: 1em;
  }
  .products-title{
 	display: flex;
@@ -31,9 +32,83 @@
 	text-decoration: none;
  }
  .product-price{
+	margin-top: 1em;
 	display: flex;
 	justify-content: flex-end;
 	font-size: 1.3em;
 	height: 2em;
 
  }
+
+ /* ------------------ Details Product ---------------- */
+
+ .product-container{
+	 display: flex;
+	 justify-content: center;
+	}
+	.wrapper{
+		display: flex;
+		flex-direction: column;
+		/* border: 2px solid black; */
+		padding: 0 1em 1em 1em;
+		margin-top: 5em;
+		box-shadow: 0 13px 32px 1px rgb(188, 186, 186);
+	}
+ .detail-title{
+	display: flex;
+	justify-content: center;
+	padding: 1em; 
+	text-decoration: none;
+ }
+ .detail-pic{
+	width:17em;
+	height: auto;
+	border-radius: 0 0 3% 3%;
+	
+ }
+ .p-price-container{
+	/* margin-top: 1em; */
+	width:17em;
+	height: auto;
+	background-color: #e9e7e7;
+ }
+ .detail-description{
+	margin-top:1em;
+	padding: 0 1em;
+ }
+
+ .detail-price{
+	margin-top: 1em;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 1.3em;
+	height: 2em;
+	padding: 0 1em;
+ }
+
+ .button-container{
+	display: flex;
+	justify-content: space-around;
+ }
+
+ .detail-button{
+	background-image: linear-gradient(to right, #24C6DC 0%, #7d77bd  51%, #24C6DC  100%);
+	margin: 10px;
+	padding: 10px 25px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;            
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	display: block;
+	border: none;
+ }
+
+ .detail-button:hover {
+	background-position: right center; /* change the direction of the change here */
+	text-decoration: none;
+ }
+ /* ------------------ END Details Product ---------------- */
+         

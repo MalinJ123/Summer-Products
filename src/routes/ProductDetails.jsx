@@ -30,19 +30,30 @@ const ProductDetails = () => {
 	}
 
 	return (
-		<section className="product-container">
-			<h2>{product.title}</h2>
-			<img 
-				className="products-pic" 
-				src={product.image} 
-				alt="bild på produkt" 
-			/>
-			<p>{product.description}</p>
-			<p>{product.price} Kr</p>
-			<p>
-				<Link to="/products"> Tillbaka</Link>
+		<>
+			<section className="product-container">
+				<div className="wrapper">
+				<h2 className="detail-title">{product.titel}</h2>
+				<img
+					className="detail-pic"
+					src={product.image}
+					alt="bild på produkt"
+				/>
+				<div className="p-price-container">
+					<p className="detail-description">{product.description}</p>
+					<p className="detail-price">{product.price} Kr</p>
+				</div>
+				</div>
+			</section>
+			<p className="button-container">
+				<button className="detail-button" > Tillbaka
+					<Link to="/products"></Link>
+				</button>
+				<button className="detail-button">
+					Lägg till
+				</button>
 			</p>
-		</section>
+		</>
 	);
 };
 
