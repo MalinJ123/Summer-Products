@@ -50,14 +50,23 @@
 
 .footer-body{
 	background-color: rgba(0, 0, 0, 0.654);
-	height: auto;
+	height: 5em;
 	width: 100%;
-	color: white;
+	color: rgb(202, 197, 197);
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	position: fixed;
   	left: 0;
  	bottom: 0;
+}
+
+.openhour{
+	font-size: 1.1em;
+	margin-bottom: 0.3em;
+}
+.days{
+	font-size: 0.9em;
 }
 
 /* -------------- END FOOTER --------------- */
