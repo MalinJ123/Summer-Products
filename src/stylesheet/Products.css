@@ -1,3 +1,5 @@
+
+
 .products-body {
 	display: flex;
 	align-items: center;
@@ -88,9 +90,12 @@
 
  .button-container{
 	display: flex;
-	justify-content: space-around;
- }
 
+}
+.link-btn{
+	color: white;
+	text-decoration: none;
+}
  .detail-button{
 	background-image: linear-gradient(to right, #24C6DC 0%, #7d77bd  51%, #24C6DC  100%);
 	margin: 10px;

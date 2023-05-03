@@ -3,6 +3,8 @@ import { useActionData } from "react-router-dom";
 import { useLoaderData, Link } from "react-router-dom";
 import "../stylesheet/Products.css";
 import Suunto from "../assets/Suunto.jpg";
+import Footer from "../components/Footer";
+
 
 const testData = [
 	{
@@ -72,6 +74,7 @@ const Products = () => {
 					</div>
 				))}
 			</div>
+		
 		</section>
 	);
 };

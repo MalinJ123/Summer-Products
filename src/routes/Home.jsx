@@ -1,6 +1,6 @@
 import paradise from "../assets/paradise.jpg";
 import "../stylesheet/Home.css";
-import Footer from "./footer";
+import Footer from "../components/Footer.jsx";
 
 const Home = () => {
 	return (
