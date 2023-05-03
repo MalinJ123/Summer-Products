@@ -9,6 +9,7 @@ const Root = () => {
 			<NavLink to="/">Home</NavLink>
 			<NavLink to="products"> Products</NavLink>
 			<NavLink to="error"> Error</NavLink>
+			<NavLink to="/details/1">Detaljer</NavLink>
 		</header>
 		<main>
 			<Outlet/>
