@@ -5,6 +5,7 @@ import Products, {loader as ProductsLoader}from './routes/Products.jsx'
 import ProductDetails from './routes/ProductDetails.jsx'
 
 import ErrorPage from "./routes/ErrorPage.jsx";
+import ShoppingCart from "./routes/ShoppingCart.jsx";
 
 
 const router = createHashRouter([
@@ -26,6 +27,11 @@ const router = createHashRouter([
 				path: 'details/:id',
 				element: <ProductDetails/>,
 				loader: ProductsLoader
+			},
+			{
+				path: 'cart',
+				element: <ShoppingCart/>,
+				loader: ProductsLoader,
 			}
 			
 		],

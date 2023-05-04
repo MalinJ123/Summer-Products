@@ -52,7 +52,11 @@ const ProductDetails = () => {
 						</p>
 						<p className="detail-price">{product.price} Kr</p>
 					</div>
-					<button className="detail-button">Lägg till</button>
+					<button className="detail-button">
+					<Link className="link-btn" to="/cart">
+						Lägg till
+					</Link>
+				</button>
 				</div>
 			</section>
 		</>

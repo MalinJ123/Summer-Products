@@ -67,9 +67,9 @@ const Products = () => {
 							src={image}
 							alt="bild på produkt"
 						/>
-						<p>{description}</p>
+						{/* <p className="empty">{description}</p> */}
 						<div className="product-price">
-							<p>{price}kr</p>
+							<p>Pris: {price}kr</p>
 						</div>
 					</div>
 				))}
