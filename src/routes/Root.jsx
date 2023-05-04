@@ -10,6 +10,8 @@ const Root = () => {
 			<NavLink className="products link"  to="products"> Products</NavLink>
 			<NavLink className="error link"  to="error"> Error</NavLink>
 			<NavLink className="details link"  to="/details/1">Detaljer</NavLink>
+			<NavLink className="details link"  to="/cart">ShoppingCart</NavLink>
+
 		</header>
 		<main>
 			<Outlet/>

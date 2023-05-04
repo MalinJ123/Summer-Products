@@ -7,5 +7,7 @@ async function getProducts(){
 	const response= await fetch(url + '?action=get-products&shopid=' + shopId)
 	const data = await response.json()
 	console.log('response from API: ', data )
+
+	return data
 }
-getProducts()
+export {getProducts}

@@ -17,6 +17,12 @@ const ProductDetails = () => {
 	// 	return null
 	// }
 
+	function handleAddToCart() {
+		props.onAddToCart(product.name, product.picture, product.price);
+	 }
+	 
+	 
+
 	if (!product) {
 		return (
 			<section>
@@ -40,10 +46,10 @@ const ProductDetails = () => {
 			</p>
 			<section className="product-container">
 				<div className="wrapper">
-					<h2 className="detail-title">{product.titel}</h2>
+					<h2 className="detail-title">{product.name}</h2>
 					<img
 						className="detail-pic"
-						src={product.image}
+						src={product.picture}
 						alt="bild på produkt"
 					/>
 					<div className="p-price-container">
@@ -52,11 +58,7 @@ const ProductDetails = () => {
 						</p>
 						<p className="detail-price">{product.price} Kr</p>
 					</div>
-					<button className="detail-button">
-					<Link className="link-btn" to="/cart">
-						Lägg till
-					</Link>
-				</button>
+					<button className="detail-button" onClick={handleAddToCart}>Lägg till</button>
 				</div>
 			</section>
 		</>
