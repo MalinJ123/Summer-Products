@@ -8,49 +8,49 @@ import { getProducts } from "../data/getProducts.js";
 export const loader = () => getProducts();
 
 const Products = () => {
-  const productData = useLoaderData();
-  const [searchValue, setSearchValue] = useState("");
+	const productData = useLoaderData();
+	const [searchValue, setSearchValue] = useState("");
 
-  const handleChange = (event) => {
-    setSearchValue(event.target.value);
-  };
+	const handleChange = (event) => {
+		setSearchValue(event.target.value);
+	};
 
-  const filteredProducts = productData.filter((product) =>
-    product.name.toLowerCase().includes(searchValue.toLowerCase())
-  );
+	const filteredProducts = productData.filter((product) =>
+		product.name.toLowerCase().includes(searchValue.toLowerCase())
+	);
 
-  return (
-    <section className="products-body">
-      <h2 className="productTitle">Products</h2>
+	return (
+		<section className="products-body">
+			<h2 className="productTitle">Products</h2>
 
-      <input
-        onChange={handleChange}
-        className="search-input"
-        type="text"
-        placeholder="Sök på produkt"
-      />
-     
-      <div className="grid-container">
-        {filteredProducts.map(({ id, name, picture, price }) => (
-          <div className="product" key={id}>
-            <h3 className="products-title">
-              <Link to={`/details/${id}`}>{name}</Link>
-            </h3>
-            <img
-              className="products-pic"
-              src={picture}
-              alt="bild på produkt"
-            />
-            <div className="product-price">
-              <p>Pris:{price}kr</p>
-            </div>
-          </div>
-        ))}
-      </div>
+			<input
+				onChange={handleChange}
+				className="search-input"
+				type="text"
+				placeholder="Sök på produkt"
+			/>
 
-      {/* <Footer /> */}
-    </section>
-  );
+			<div className="grid-container">
+				{filteredProducts.map(({ id, name, picture, price }) => (
+					<div className="product" key={id}>
+						<h3 className="products-title">
+							<Link to={`/details/${id}`}>{name}</Link>
+						</h3>
+						<img
+							className="products-pic"
+							src={picture}
+							alt="bild på produkt"
+						/>
+						<div className="product-price">
+							<p>Pris:{price}kr</p>
+						</div>
+					</div>
+				))}
+			</div>
+
+			{/* <Footer /> */}
+		</section>
+	);
 };
 
 export default Products;
