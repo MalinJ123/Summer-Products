@@ -1,4 +1,9 @@
 
+.CartIcon{
+	color:rgba(0, 0, 0, 0.654);
+	background-color: black;
+}
+
 /* --------------Header --------------- */
 .header-body{
 	background-color: rgb(53, 52, 52);

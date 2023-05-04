@@ -33,8 +33,8 @@ const Products = () => {
 			<div className="grid-container">
 				{filteredProducts.map(({ id, name, picture, price }) => (
 					<div className="product" key={id}>
-						<h3 className="products-title">
-							<Link to={`/details/${id}`}>{name}</Link>
+						<h3 className="">
+							<Link className="products-title" to={`/details/${id}`}>{name}</Link>
 						</h3>
 						<img
 							className="products-pic"
