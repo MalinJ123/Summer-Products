@@ -3,9 +3,11 @@ import Root from './routes/Root.jsx'
 import Home from './routes/Home.jsx'
 import Products, {loader as ProductsLoader}from './routes/Products.jsx'
 import ProductDetails from './routes/ProductDetails.jsx'
-import AdminLogin from "./routes/AdminLogin.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import ShoppingCart from "./routes/ShoppingCart.jsx";
+
+import AdminLogin from "./routes/AdminLogin.jsx";
+import AdminUser from "./routes/AdminUser.jsx";
 
 
 const router = createHashRouter([
@@ -37,6 +39,16 @@ const router = createHashRouter([
 				path: 'admin',
 				element: <AdminLogin/>,
 				loader: ProductsLoader,
+				// 'children: [{
+
+				// 	path : 'admin-user',
+				// 	element: <AdminUser/>,
+				// 	}
+				// ]'
+			},
+			{
+				path : 'admin-user',
+				element: <AdminUser/>,
 			}
 			
 		],
