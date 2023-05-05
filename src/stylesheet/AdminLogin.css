@@ -38,20 +38,47 @@
 	font-size: 20px;
 
 }
-.input {
-	margin-bottom: 1em;
-	height: 2.5em;
-	width: 20em;
-	cursor: pointer;
-}
 
 .admin-button {
-	margin-top: 1em;
+	margin-top: 2em;
 	width: 70%;
 	cursor: pointer;
 
 }
 
+.label-container{
+	height: 10em;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+}
+
+input{
+	margin-bottom: 1em;
+	height: 2.5em;
+	width: 17em;
+	cursor: pointer;
+}
+.invalid {
+	border: 3px solid red;
+
+
+}
+.valid {
+	border: 3px solid rgb(40, 219, 67);
+}
+
+.error-message {
+	display: block;
+	margin-top: -1em;
+	color: rgb(141, 17, 17);
+	background-color: rgba(255, 0, 0, 0.2);
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 0.5em;
+	border-radius: 5px;
+ }
+ 
 @media screen and (max-width: 767px) {
 	.form-container {
 		max-width: 320px;
@@ -67,4 +94,7 @@
 		width: 16em;
 		cursor: pointer;
 	}
+	.error-message {
+		font-size: 0.9em;
+	 }
 }
