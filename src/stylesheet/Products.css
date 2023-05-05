@@ -94,6 +94,7 @@
 	color: white;
 	text-decoration: none;
 }
+.adminFormBtn,
 .admin-button,
 .detail-button {
 	background-image: linear-gradient(
