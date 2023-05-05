@@ -8,8 +8,6 @@ align-items: center;
 
 .title-container{
 	display:flex;
-
-
 }
 
 .admin-container {
@@ -40,3 +38,21 @@ align-items: center;
 	width: 60%;
 	cursor: pointer;
 }
+
+input:invalid + p::before {
+	content: "⚠️ ";
+	color: red;
+	padding-right: 5px;
+ }
+ input:valid + p::before {
+	content: "✅ ";
+	color: green;
+	padding-right: 5px;
+ }
+ p.validation-message {
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	color: red;
+ }
