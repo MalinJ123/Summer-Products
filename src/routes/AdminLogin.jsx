@@ -53,6 +53,8 @@ const AdminLogin = () => {
 				src={paradise}
 				alt="En härlig paradis bild"
 			/>
+
+
 			<form className="form-container" onSubmit={handleSubmit}>
 				<div className="close-button">
 					<Link className="" to="/">
@@ -61,6 +63,7 @@ const AdminLogin = () => {
 				</div>
 				<h2 className="AdminLogin-title">Admin login</h2>
 				<div className="label-container">
+					
 					<label className="input-text" htmlFor="">
 						<p className="text">Username</p>
 						<input
@@ -80,6 +83,7 @@ const AdminLogin = () => {
 							<p className="error-message">Username = Admin </p>
 						)}
 					</label>
+					
 					<label htmlFor="">
 						<p className="text">Password</p>
 						<input
