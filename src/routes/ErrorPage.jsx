@@ -1,3 +1,4 @@
+import depp from "../assets/depp.jpg";
 
 import { Link } from "react-router-dom"
 
@@ -5,13 +6,19 @@ import { Link } from "react-router-dom"
 const ErrorPage = () => {
 
 	return (
+
+		<>
 		<section className="ErrorPage-container">
-			<h2>No Product</h2>
+			<img src={depp}  alt="bild som beskriver känslan att inte komma åt hemsidan" />
+			<h2>This side does not exit</h2>
 			<p>Please check the URL again</p>
-				<p><Link to="/"> Tillbaka</Link>
-				</p>
+			<button className="detail-button">
+				<Link to="/"> Tillbaka</Link>
+					</button>
 		</section>
+		</>
 	);
 }
 
 export default ErrorPage;
+

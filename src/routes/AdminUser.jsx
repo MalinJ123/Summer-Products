@@ -5,6 +5,12 @@ const AdminUser = () => {
 	const [isFieldTouched, setIsFieldTouched] = useState(false);
 	const [isFieldEmpty, setIsFieldEmpty] = useState(false);
 
+	const [productPrice, setProductPrice] = useState("");
+	const handleProductPriceChange = (e) => {
+	  const onlyNumbers = e.target.value.replace(/[^0-9]/g, ""); // tar bort allt utom siffror
+	  setProductPrice(onlyNumbers);
+	}
+
 	// TITEL
 	const [title, setTitle] = useState("");
 	const [titleIsValid, setTitleIsValid] = useState(false); // should be a boolean
@@ -84,13 +90,14 @@ const AdminUser = () => {
 					{/* LÄÄÄNK BILD URL */}
 					<label htmlFor="">
 						<p className="text">Produkt Url</p>
-						<input type="text" />
+						<input placeholder=" https://"type="text" />
 					</label>
 					{/* Produkt BESKRIVNING */}
 					<label htmlFor="">
 						<p className="text">Produkt beskrivning</p>
 						<textarea
 							name=""
+							placeholder="Beskriv produkten ni säljer"
 							id=""
 							cols="30"
 							rows="6"
@@ -115,9 +122,15 @@ const AdminUser = () => {
 
 					{/* PRIS  */}
 					<label htmlFor="">
-						<p className="text">Produkt Pris</p>
-						<input type="text" />
+						<p className="text">Pris (kr)</p>
+						<input
+							type="text"
+							placeholder="121"
+							value={productPrice}
+							onChange={handleProductPriceChange}
+						/>
 					</label>
+
 					<button className="adminFormBtn">Lägg till </button>
 				</form>
 			</section>

@@ -1,21 +1,11 @@
 import { useLoaderData, useParams, Link, useNavigate } from "react-router-dom";
 
 const ProductDetails = () => {
-	//id kommer från URL: /:id
-	//vi återanvänder Loader-Functionen från Products.jsx
-	//leta efter produkten med id i listan med alla produkter
 
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const allProducts = useLoaderData();
 	const product = allProducts.find((p) => p.id == id);
-
-	// console.log('ProductDetails: product = ', product, id)
-
-	// if(!product){
-	// 	navigate('/error')
-	// 	return null
-	// }
 
 	function handleAddToCart() {
 		props.onAddToCart(product.name, product.picture, product.price);

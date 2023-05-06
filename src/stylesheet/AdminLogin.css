@@ -41,7 +41,7 @@
 
 .admin-button {
 	margin-top: 2em;
-	width: 60%;
+	width: 90%;
 	cursor: pointer;
 
 }
@@ -58,6 +58,11 @@ input{
 	height: 2.5em;
 	width: 17em;
 	cursor: pointer;
+}
+
+textarea::placeholder{
+padding: 0.3em 0 0 0.3em;
+font-size: 12px;
 }
 .invalid {
 	border: 3px solid red;
