@@ -12,6 +12,7 @@ export const loader = () => getProducts();
 const Products = () => {
 	const productData = useLoaderData();
 	const [searchValue, setSearchValue] = useState("");
+	
 
 	const handleChange = (event) => {
 		setSearchValue(event.target.value);

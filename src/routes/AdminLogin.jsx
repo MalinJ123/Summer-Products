@@ -31,7 +31,7 @@ const AdminLogin = () => {
 	const validatePassword = () => {
 		if (password.length === 0) {
 			setPasswordIsValid(null);
-		} else if (password !== "mums") {
+		} else if (password !== "password") {
 			setPasswordIsValid(false);
 		} else {
 			setPasswordIsValid(true);
@@ -44,7 +44,7 @@ const AdminLogin = () => {
 		e.preventDefault(); //förhindra sidan att laddas om vid submit
 		if (formIsValid) {
 			console.log("Admin logged in successfully");
-			// navigate 
+			// navigate
 		} else {
 			console.log("Admin login failed");
 			// visa felmeddelande för användaren
@@ -59,7 +59,6 @@ const AdminLogin = () => {
 				alt="En härlig paradis bild"
 			/>
 
-
 			<form className="form-container" onSubmit={handleSubmit}>
 				<div className="close-button">
 					<Link className="" to="/">
@@ -68,7 +67,6 @@ const AdminLogin = () => {
 				</div>
 				<h2 className="AdminLogin-title">Admin login</h2>
 				<div className="label-container">
-					
 					<label className="input-text" htmlFor="">
 						<p className="text">Username</p>
 						<input
@@ -88,7 +86,7 @@ const AdminLogin = () => {
 							<p className="error-message">Username = Admin </p>
 						)}
 					</label>
-					
+
 					<label htmlFor="">
 						<p className="text">Password</p>
 						<input
@@ -105,17 +103,20 @@ const AdminLogin = () => {
 							onBlur={() => validatePassword()}
 						/>
 						{!passwordIsValid && password.length > 0 && (
-							<p className="error-message">Password = mums </p>
+							<p className="error-message">
+								Password = password{" "}
+							</p>
 						)}
 						{passwordIsValid}
 					</label>
 				</div>
-				<button type = "submit"
+				<button
+					type="submit"
 					className="admin-button"
 					onClick={
 						formIsValid
 							? () => {
-								navigate("/admin/user");
+									navigate("/admin/user");
 							  }
 							: null
 					}
@@ -129,4 +130,3 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
-
