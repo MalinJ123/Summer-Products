@@ -7,6 +7,8 @@ import { getProducts } from "../data/getProducts.js";
 
 export const loader = () => getProducts();
 
+
+//sök funktionen på produkt sidan med stora och små bokstäver 
 const Products = () => {
 	const productData = useLoaderData();
 	const [searchValue, setSearchValue] = useState("");
@@ -34,7 +36,7 @@ const Products = () => {
 				{filteredProducts.map(({ id, name, picture, price }) => (
 					<div className="product" key={id}>
 						<h3 className="">
-							<Link className="products-title" to={`/details/${id}`}>{name}</Link>
+							<Link className="products-title" to={`/products/${id}`}>{name}</Link>
 						</h3>
 						<img
 							className="products-pic"

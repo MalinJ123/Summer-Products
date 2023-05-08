@@ -1,6 +1,7 @@
 import paradise from "../assets/paradise.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../stylesheet/AdminLogin.css";
 // import '../stylesheet/Home.css'
@@ -37,12 +38,16 @@ const AdminLogin = () => {
 		}
 	};
 
+	const navigate = useNavigate();
+
 	const handleSubmit = (e) => {
 		e.preventDefault(); //förhindra sidan att laddas om vid submit
 		if (formIsValid) {
 			console.log("Admin logged in successfully");
+			// navigate 
 		} else {
 			console.log("Admin login failed");
+			// visa felmeddelande för användaren
 		}
 	};
 
@@ -105,12 +110,12 @@ const AdminLogin = () => {
 						{passwordIsValid}
 					</label>
 				</div>
-				<button
+				<button type = "submit"
 					className="admin-button"
 					onClick={
 						formIsValid
 							? () => {
-									window.location.href = "/admin/user";
+								navigate("/admin/user");
 							  }
 							: null
 					}
@@ -124,3 +129,4 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
+

@@ -2,7 +2,7 @@ import { createHashRouter } from "react-router-dom";
 import Root from './routes/Root.jsx'
 import Home from './routes/Home.jsx'
 import Products, {loader as ProductsLoader}from './routes/Products.jsx'
-import ProductDetails from './routes/ProductDetails.jsx'
+import DetailsView from './routes/DetailsView.jsx'
 import ErrorPage from "./routes/ErrorPage.jsx";
 import ShoppingCart from "./routes/ShoppingCart.jsx";
 
@@ -26,8 +26,8 @@ const router = createHashRouter([
 		
 			},
 			{
-				path: 'details/:id',
-				element: <ProductDetails/>,
+				path: 'products/:id',
+				element: <DetailsView/>,
 				loader: ProductsLoader
 			},
 			{
@@ -39,15 +39,10 @@ const router = createHashRouter([
 				path: 'admin',
 				element: <AdminLogin/>,
 				loader: ProductsLoader,
-				// 'children: [{
-
-				// 	path : 'admin-user',
-				// 	element: <AdminUser/>,
-				// 	}
-				// ]'
+			
 			},
 			{
-				path : 'admin-user',
+				path : 'admin/user',
 				element: <AdminUser/>,
 			}
 			
