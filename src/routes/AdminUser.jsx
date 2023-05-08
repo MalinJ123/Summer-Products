@@ -1,5 +1,8 @@
 import "../stylesheet/AdminUser.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const AdminUser = () => {
 	const [isFieldTouched, setIsFieldTouched] = useState(false);
@@ -55,13 +58,18 @@ const AdminUser = () => {
 		// Skicka formulärdata till servern
 	}
 
+	const navigate = useNavigate();  
+
+	function handleLogout() {
+		navigate('/admin');
+	 }
 	return (
 		<>
 			<section className="Admin-body">
 				<div className="title-container">
 					<h2>AdminUser</h2>
-					<button className="admin-button">logga ut</button>
-				</div>
+					<button className="admin-button" onClick={handleLogout}>logga ut</button>
+    		</div>
 
 				{/* TITEL */}
 				<form className="admin-container" onSubmit={handleSubmit}>
