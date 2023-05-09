@@ -1,75 +1,72 @@
-import "../stylesheet/AdminUser.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-
+import { Link, useNavigate } from "react-router-dom";
+import "../stylesheet/AdminUser.css";
+import AdminProducts from "./AdminProducts";
 
 const AdminUser = () => {
+	const [products, setProducts] = useState([]);
 	const [isFieldTouched, setIsFieldTouched] = useState(false);
 	const [isFieldEmpty, setIsFieldEmpty] = useState(false);
 
 	const [productPrice, setProductPrice] = useState("");
-	const handleProductPriceChange = (e) => {
-	  const onlyNumbers = e.target.value.replace(/[^0-9]/g, ""); // tar bort allt utom siffror
-	  setProductPrice(onlyNumbers);
-	}
+	const [productUrl, setProductUrl] = useState("");
 
 	// TITEL
 	const [title, setTitle] = useState("");
-	const [titleIsValid, setTitleIsValid] = useState(false); // should be a boolean
+	const [titleIsValid, setTitleIsValid] = useState(false);
 
 	// Beskrivning
-	const [description, setDescription] = useState(""); // typo in the variable name
-	const [descriptionIsValid, setDescriptionIsValid] = useState(false); // should be a boolean
+	const [description, setDescription] = useState("");
+	const [descriptionIsValid, setDescriptionIsValid] = useState(false);
 
 	function handleTitleChange(event) {
 		setTitle(event.target.value);
+	}
 
-		if (event.target.value.length < 3) {
-			setTitleIsValid("Felmeddelande: minst tre bokstäver");
-		} else if (event.target.value.length === 0) {
-			// should check the length of the string
-			setTitleIsValid(null);
-		} else {
-			setTitleIsValid("");
-		}
+	function handleUrlChange(event) {
+		setProductUrl(event.target.value);
 	}
 
 	function handleDescriptionChange(event) {
 		setDescription(event.target.value);
+	}
 
-		if (event.target.value.length < 5) {
-			setDescriptionIsValid("Felmeddelande: minst fem bokstäver");
-		} else if (event.target.value.length === 0) {
-			// should check the length of the string
-			setDescriptionIsValid(null);
-		} else {
-			setDescriptionIsValid("");
-		}
+	function handlePriceChange(event) {
+		const onlyNumbers = event.target.value.replace(/[^0-9]/g, "");
+		setProductPrice(onlyNumbers);
 	}
 
 	function handleBlur() {
 		setIsFieldTouched(true);
 	}
 
+	function handleClick() {
+		console.log("btn is clicked");
+		console.log(products); 
+	 }
+
 	function handleSubmit(event) {
 		event.preventDefault();
+		const product = { title, productUrl, description, price: productPrice };
 
-		// Skicka formulärdata till servern
+		setProducts([...products, product]);
 	}
 
-	const navigate = useNavigate();  
+	const navigate = useNavigate();
 
 	function handleLogout() {
-		navigate('/admin');
-	 }
+		navigate("/admin");
+	}
+
 	return (
 		<>
 			<section className="Admin-body">
 				<div className="title-container">
 					<h2>AdminUser</h2>
-					<button className="admin-button" onClick={handleLogout}>logga ut</button>
-    		</div>
+					<button className="admin-button" onClick={handleLogout}>
+						logga ut
+					</button>
+				</div>
 
 				{/* TITEL */}
 				<form className="admin-container" onSubmit={handleSubmit}>
@@ -83,7 +80,7 @@ const AdminUser = () => {
 							onBlur={handleBlur}
 							className={
 								isFieldTouched &&
-								(isFieldEmpty || !!titleIsValid) // should check if titleIsValid is not false or null
+								(isFieldEmpty || !!titleIsValid)
 									? "invalid"
 									: ""
 							}
@@ -98,8 +95,15 @@ const AdminUser = () => {
 					{/* LÄÄÄNK BILD URL */}
 					<label htmlFor="">
 						<p className="text">Produkt Url</p>
-						<input placeholder=" https://"type="text" />
+						<input
+							placeholder=" https://"
+							type="text"
+							value={productUrl}
+							onChange={handleUrlChange}
+						/>
+						{productUrl && <img src={productUrl} alt="" />}
 					</label>
+
 					{/* Produkt BESKRIVNING */}
 					<label htmlFor="">
 						<p className="text">Produkt beskrivning</p>
@@ -115,17 +119,16 @@ const AdminUser = () => {
 							onBlur={handleBlur}
 							className={
 								isFieldTouched &&
-								(isFieldEmpty || !!descriptionIsValid) // should check if descriptionIsValid is not false or null
+								(isFieldEmpty || !!descriptionIsValid)
 									? "invalid"
 									: ""
 							}
 						/>
-						{isFieldTouched &&
-							!!descriptionIsValid && ( // should check if descriptionIsValid is not false
-								<span className="error-message">
-									{descriptionIsValid}
-								</span>
-							)}
+						{isFieldTouched && !!descriptionIsValid && (
+							<span className="error-message">
+								{descriptionIsValid}
+							</span>
+						)}
 					</label>
 
 					{/* PRIS  */}
@@ -135,11 +138,17 @@ const AdminUser = () => {
 							type="text"
 							placeholder="121"
 							value={productPrice}
-							onChange={handleProductPriceChange}
+							onChange={handlePriceChange}
 						/>
 					</label>
+					<button className="adminFormBtn" onClick={handleClick}>
+  Lägg till
+</button>
 
-					<button className="adminFormBtn">Lägg till </button>
+
+					<button className="admin-details">
+						<Link to="/admin/products"> Gå till Produkt sidan</Link>
+					</button>
 				</form>
 			</section>
 		</>

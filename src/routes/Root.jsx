@@ -11,11 +11,9 @@ const Root = () => {
 					Home
 				</NavLink>
 				<NavLink className="products link" to="/products">
-					{" "}
 					Products
 				</NavLink>
 				<NavLink className="error link" to="/error">
-					{" "}
 					Error
 				</NavLink>
 				<NavLink className="details link" to="/details/1">
@@ -25,7 +23,6 @@ const Root = () => {
 					<FontAwesomeIcon icon={faRightToBracket} />
 				</NavLink>
 				<NavLink className="icon link" to="/admin/user">
-					{" "}
 					AdminUser
 				</NavLink>
 

@@ -5,7 +5,7 @@ import Products, {loader as ProductsLoader}from './routes/Products.jsx'
 import DetailsView from './routes/DetailsView.jsx'
 import ErrorPage from "./routes/ErrorPage.jsx";
 import ShoppingCart from "./routes/ShoppingCart.jsx";
-
+import AdminProducts from "./routes/AdminProducts.jsx";
 import AdminLogin from "./routes/AdminLogin.jsx";
 import AdminUser from "./routes/AdminUser.jsx";
 
@@ -44,6 +44,12 @@ const router = createHashRouter([
 			{
 				path : 'admin/user',
 				element: <AdminUser/>,
+			},
+			{
+				path : 'admin/products',
+				element: <AdminProducts/>,
+				loader: ProductsLoader,
+
 			}
 			
 		],
