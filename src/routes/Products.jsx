@@ -3,17 +3,19 @@ import { useLoaderData, Link } from "react-router-dom";
 import "../stylesheet/Products.css";
 import Footer from "../components/Footer";
 import { getProducts } from "../data/getProducts.js";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { cartState } from "../atoms/cartState";
 // import ShoppingCart from "./ShoppingCart";
 
 
 export const loader = () => getProducts();
 
+
 const Products = () => {
   const productData = useLoaderData();
   const [searchValue, setSearchValue] = useState("");
   const [sortOrder, setSortOrder] = useState("");
-	// const [cartItems, setCartItems] = useRecoilState(cartState); // kommer ifrån PRODUCT DETAILS
+	const [cartItems, setCartItems] = useRecoilState(cartState); // kommer ifrån PRODUCT DETAILS
 
 
 
@@ -49,25 +51,25 @@ const Products = () => {
     }
   };
 
-  // function handleAddToCart() {
-	// 	// console.log(product.id);
-	// 	const existingItem = cartItems.find(
-	// 		(cartItem) => cartItem.id === product.id
-	// 	);
+  function handleAddToCart() {
+		// console.log(product.id);
+		const existingItem = cartItems.find(
+			(cartItem) => cartItem.id === product.id
+		);
 
-	// 	if (existingItem) {
-	// 		const updatedCartItems = cartItems.map((cartItem) =>
-	// 			cartItem.id === product.id
-	// 				? { ...cartItem, amount: cartItem.amount + 1 }
-	// 				: cartItem
-	// 		);
-	// 		setCartItems(updatedCartItems);
-	// 		console.log("updated item with new amount");
-	// 	} else {
-	// 		setCartItems([...cartItems, { ...product, amount: 1 }]);
-	// 		console.log("added new item");
-	// 	}
-	// }
+		if (existingItem) {
+			const updatedCartItems = cartItems.map((cartItem) =>
+				cartItem.id === product.id
+					? { ...cartItem, amount: cartItem.amount + 1 }
+					: cartItem
+			);
+			setCartItems(updatedCartItems);
+			console.log("updated item with new amount");
+		} else {
+			setCartItems([...cartItems, { ...product, amount: 1 }]);
+			console.log("added new item");
+		}
+	}
 
   const sortedProducts = sortProductsByPrice(sortProductsByName(filteredProducts));
 

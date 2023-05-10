@@ -81,12 +81,8 @@ e.preventDefault()
 		setForm("register");
 	}
 	return (
-		<>
-			<img
-				className="admin-pic"
-				src={paradise}
-				alt="En härlig paradis bild"
-			/>
+		<div className="admin-pic">
+		
 			{form === "login" ? (
 				<form
 					className="form-container"
@@ -264,7 +260,7 @@ e.preventDefault()
 			)}
 
 			<Footer />
-		</>
+		</div>
 	);
 };
 
