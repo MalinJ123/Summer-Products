@@ -101,6 +101,7 @@ const AdminUser = () => {
 						<p className="text">Produkt Titel</p>
 						<input
 							type="text"
+							placeholder="Produkt namn"
 							value={title}
 							onChange={handleTitleChange}
 							onBlur={handleBlur}
