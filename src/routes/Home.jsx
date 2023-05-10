@@ -2,16 +2,9 @@ import paradise from "../assets/paradise.jpg";
 import "../stylesheet/Home.css";
 import Footer from "../components/Footer.jsx";
 
-
-
 const Home = () => {
 	return (
-		<>
-			<img
-				className="home-pic"
-				src={paradise}
-				alt="En härlig paradis bild"
-			/>
+		<div className="home-container">
 			<div className="content">
 				<h2 className="title"> Home </h2>
 				<p className="description">
@@ -23,9 +16,9 @@ const Home = () => {
 					including versions of Lorem Ipsu
 				</p>
 			</div>
-	
-			<Footer/>
-		</>
+
+			<Footer />
+		</div>
 	);
 };
 

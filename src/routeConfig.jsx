@@ -33,12 +33,11 @@ const router = createHashRouter([
 			{
 				path: 'cart',
 				element: <ShoppingCart/>,
-				loader: ProductsLoader,
+				// loader: ProductsLoader, // varje gång du använder den här så går sidan skiiit långsamt 
 			},
 			{
 				path: 'admin',
 				element: <AdminLogin/>,
-				loader: ProductsLoader,
 			
 			},
 			{

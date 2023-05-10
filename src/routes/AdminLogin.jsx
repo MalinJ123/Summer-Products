@@ -3,20 +3,42 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+// import {addUser} from "../data/addUser";
+import addUser from "../data/addProducts.js";
 
 import "../stylesheet/AdminLogin.css";
 // import '../stylesheet/Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+export const loader = () => addUser();
+
 const AdminLogin = () => {
+	const [form, setForm] = useState("login");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+
+	const [registerUsername, setRegisterUsername] = useState("");
+	const [registerPassword, setRegisterPassword] = useState("");
+	const [registerRepeatPassword, setRegisterRepeatPassword] = useState("");
 
 	const [usernameIsValid, setUsernameIsValid] = useState(null);
 	const [passwordIsValid, setPasswordIsValid] = useState(null);
 
 	const formIsValid = usernameIsValid && passwordIsValid;
+
+	function handleRegister(e) {
+e.preventDefault()
+		if (registerUsername) {
+			if (registerPassword === registerRepeatPassword) {
+				addUser({
+					username: registerUsername,
+					password: registerPassword,
+				});
+				console.log("nu har du lagt till användare");
+			}
+		}
+	}
 
 	const validateUsername = () => {
 		if (username.length === 0) {
@@ -52,6 +74,12 @@ const AdminLogin = () => {
 		}
 	};
 
+	function setFormLogin() {
+		setForm("login");
+	}
+	function setFormRegister() {
+		setForm("register");
+	}
 	return (
 		<>
 			<img
@@ -59,74 +87,183 @@ const AdminLogin = () => {
 				src={paradise}
 				alt="En härlig paradis bild"
 			/>
-
-			<form className="form-container" onSubmit={handleSubmit}>
-				<div className="close-button">
-					<Link className="" to="/">
-						<FontAwesomeIcon icon={faTimes} />
-					</Link>
-				</div>
-				<h2 className="AdminLogin-title">Admin login</h2>
-				<div className="label-container">
-					<label className="input-text" htmlFor="">
-						<p className="text">Username</p>
-						<input
-							className={
-								usernameIsValid === false
-									? "invalid"
-									: usernameIsValid === true
-									? "valid"
-									: ""
-							}
-							type="text"
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-							onBlur={() => validateUsername()}
-						/>
-						{!usernameIsValid && username.length > 0 && (
-							<p className="error-message">Username = Admin </p>
-						)}
-					</label>
-
-					<label htmlFor="">
-						<p className="text">Password</p>
-						<input
-							className={
-								passwordIsValid === false
-									? "invalid"
-									: passwordIsValid === true
-									? "valid"
-									: ""
-							}
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							onBlur={() => validatePassword()}
-						/>
-						{!passwordIsValid && password.length > 0 && (
-							<p className="error-message">
-								Password = password{" "}
-							</p>
-						)}
-						{passwordIsValid}
-					</label>
-				</div>
-				<button
-					type="submit"
-					className="admin-button"
-					onClick={
-						formIsValid
-							? () => {
-									navigate("/admin/user");
-							  }
-							: null
-					}
-					disabled={!formIsValid}
+			{form === "login" ? (
+				<form
+					className="form-container"
+					onSubmit={(e) => handleSubmit(e)}
 				>
-					Logga in
-				</button>
-			</form>
-			<Footer/>
+					<div className="close-button">
+						<Link className="" to="/">
+							<FontAwesomeIcon icon={faTimes} />
+						</Link>
+					</div>
+					<div className="Admin-Login">
+						<a
+							className="AdminLogin-title bold"
+							onClick={() => setFormRegister()}
+						>
+							Login
+						</a>
+						<a
+							className="AdminLogin-title"
+							onClick={() => setFormRegister()}
+						>
+							Registrera konto
+						</a>
+					</div>
+					<div className="label-container">
+						<label className="input-text" htmlFor="">
+							<p className="text">Username</p>
+							<input
+								className={
+									usernameIsValid === false
+										? "invalid"
+										: usernameIsValid === true
+										? "valid"
+										: ""
+								}
+								type="text"
+								value={username}
+								onChange={(e) => setUsername(e.target.value)}
+								onBlur={() => validateUsername()}
+							/>
+							{!usernameIsValid && username.length > 0 && (
+								<p className="error-message">
+									Username = Admin{" "}
+								</p>
+							)}
+						</label>
+
+						<label htmlFor="">
+							<p className="text">Password</p>
+							<input
+								className={
+									passwordIsValid === false
+										? "invalid"
+										: passwordIsValid === true
+										? "valid"
+										: ""
+								}
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								onBlur={() => validatePassword()}
+							/>
+							{!passwordIsValid && password.length > 0 && (
+								<p className="error-message">
+									Password = password{" "}
+								</p>
+							)}
+							{passwordIsValid}
+						</label>
+					</div>
+					<button
+						type="submit"
+						className="admin-button"
+						onClick={
+							formIsValid
+								? () => {
+										navigate("/admin/user");
+								  }
+								: null
+						}
+						disabled={!formIsValid}
+					>
+						Logga in
+					</button>
+				</form>
+			) : (
+				<form className="form-container"	onSubmit={(e) => handleRegister(e)}>
+					
+					<div className="close-button">
+						<Link className="" to="/">
+							<FontAwesomeIcon icon={faTimes} />
+						</Link>
+					</div>
+					<div className="Admin-Login">
+						<a
+							className="AdminLogin-title"
+							onClick={() => setFormLogin()}
+						>
+							Login
+						</a>
+						<a
+							className="AdminLogin-title bold "
+							onClick={() => setFormRegister()}
+						>
+							Registrera konto
+						</a>
+					</div>
+					<div className="label-container">
+						<label className="input-text" htmlFor="">
+							<p className="text">Username</p>
+							<input
+								className={
+									usernameIsValid === false
+										? "invalid"
+										: usernameIsValid === true
+										? "valid"
+										: ""
+								}
+								type="text"
+								value={registerUsername}
+								onChange={(e) =>
+									setRegisterUsername(e.target.value)
+								}
+							/>
+						</label>
+						<label htmlFor="">
+							<p className="text">Password</p>
+							<input
+								className={
+									passwordIsValid === false
+										? "invalid"
+										: passwordIsValid === true
+										? "valid"
+										: ""
+								}
+								type="password"
+								value={registerPassword}
+								onChange={(e) =>
+									setRegisterPassword(e.target.value)
+								}
+							/>
+						</label>
+						<label htmlFor="">
+							<p className="text">Repeat Password</p>
+							<input
+								className={
+									passwordIsValid === false
+										? "invalid"
+										: passwordIsValid === true
+										? "valid"
+										: ""
+								}
+								type="password"
+								value={registerRepeatPassword}
+								onChange={(e) =>
+									setRegisterRepeatPassword(e.target.value)
+								}
+							/>
+						</label>
+					</div>
+					<button
+						type="submit"
+						className="admin-button"
+						// onClick={handleRegister}
+						disabled={
+							!registerUsername ||
+							!registerPassword ||
+							!registerRepeatPassword ||
+							registerPassword !== registerRepeatPassword
+						}
+					>
+						Registrera
+					</button>
+				</form>
+			)}
+
+			<Footer />
 		</>
 	);
 };

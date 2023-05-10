@@ -23,8 +23,8 @@
 }
 
 .products-pic {
-	max-width: 13em;
-	max-height: 15em;
+	width: 13em;
+	height: 10em;
 	margin-bottom: 1em;
 }
 .products-title {
@@ -34,9 +34,8 @@
 	text-decoration: none;
 	color: black;
 }
-.products-title:hover{
-	font-size: larger;
-	padding: 0.9em;
+.products-title:hover {
+	transform: scale(1.15);
 	color: #4538d1;
 }
 
@@ -125,7 +124,6 @@
 .detail-button:hover {
 	background-position: right center; /* change the direction of the change here */
 	text-decoration: none;
-	
 }
 /* ------------------ END Details Product ---------------- */
 
