@@ -40,13 +40,12 @@
 	cursor: pointer;
 }
 
-.error-message {
-	color: red;
- }
- 
- .valid {
-	border: 2px solid green;
- }
+.invalid {
+	border: 3px solid red;
+}
+.valid {
+	border: 3px solid rgb(40, 219, 67);
+}
 
 .AdminUrl{
 	width: 10em;

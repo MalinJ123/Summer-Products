@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylesheet/AdminUser.css";
 // import AdminProducts from "./AdminProducts";
-import addProduct from '../data/addProducts.js'
+import addProduct from "../data/addProducts.js";
+
+
 
 const AdminUser = () => {
 	const [products, setProducts] = useState([]);
@@ -39,26 +41,41 @@ const AdminUser = () => {
 
 	function handleBlur() {
 		setIsFieldTouched(true);
-	}
-
+		if (title.trim() === '' || description.trim() === '') {
+		  setIsFieldEmpty(true);
+		} else {
+		  setIsFieldEmpty(false);
+		}
+		if (title.length < 5) {
+		  setTitleIsValid('Atleast 5 characters');
+		} else {
+		  setTitleIsValid(false);
+		}
+		if (description.length < 10) {
+		  setDescriptionIsValid('Atleast 10 characters');
+		} else {
+		  setDescriptionIsValid(false);
+		}
+	 }
+	 
 	function handleClick() {
 		console.log("btn is clicked");
-		console.log(products); 
-	 }
+		console.log(products);
+	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		const product = { title, productUrl, description, price: productPrice};
-		console.log('submit körs')
+		const product = { title, productUrl, description, price: productPrice };
+		console.log("submit körs");
 		setProducts([...products, product]);
 		addProduct({
-			name : title, 
+			name: title,
 			price: productPrice,
 			description: description,
 			picture: productUrl,
 
 			// { name, price, description, picture, shopid }
-		}) 
+		});
 	}
 
 	const navigate = useNavigate();
@@ -110,7 +127,9 @@ const AdminUser = () => {
 							value={productUrl}
 							onChange={handleUrlChange}
 						/>
-						{productUrl && <img className="AdminUrl" src={productUrl} alt="" />}
+						{productUrl && (
+							<img className="AdminUrl" src={productUrl} alt="" />
+						)}
 					</label>
 
 					{/* Produkt BESKRIVNING */}
@@ -150,13 +169,19 @@ const AdminUser = () => {
 							onChange={handlePriceChange}
 						/>
 					</label>
-					<button type = "submit" className="adminFormBtn" onClick={handleClick}>
-  Lägg till
-</button>
-
+					<button
+						type="submit"
+						className="adminFormBtn"
+						onClick={handleClick}
+					>
+						Lägg till
+					</button>
 
 					<button className="admin-details">
-						<Link to="/admin/products"> Gå till Admin Produkt </Link>
+						<Link to="/admin/products">
+							{" "}
+							Gå till Admin Produkt{" "}
+						</Link>
 					</button>
 				</form>
 			</section>
