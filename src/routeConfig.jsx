@@ -21,7 +21,7 @@ const router = createHashRouter([
 			},
 			{	//path måste heta samma som navlink i roots
 				path: 'products',
-				element: <Products/>,
+				element: <Products />,
 				loader: ProductsLoader ,
 		
 			},

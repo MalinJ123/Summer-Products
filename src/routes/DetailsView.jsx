@@ -18,4 +18,3 @@ const DetailsView = () => {
 
 export default DetailsView;
 
-//recoil atom någonting från (flytta ut cartItems från shoppingCart till Recoilatom. )
