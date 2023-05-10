@@ -13,7 +13,7 @@ function AdminProduct() {
     event.preventDefault();
     const updatedProduct = {
       id: editProduct.id,
-      title: event.target.title.value,
+      name: event.target.title.value,
       picture: event.target.url.value,
       description: event.target.description.value,
       price: event.target.price.value,
@@ -52,7 +52,7 @@ function AdminProduct() {
             </form>
           ) : (
             <>
-              <h3 className="title">{product.title}</h3>
+              <h3 className="title">{product.name}</h3>
               <img
                 className="products-pic"
                 src={product.picture}
