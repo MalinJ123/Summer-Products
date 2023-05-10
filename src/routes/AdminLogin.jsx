@@ -2,6 +2,7 @@ import paradise from "../assets/paradise.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 import "../stylesheet/AdminLogin.css";
 // import '../stylesheet/Home.css'
@@ -125,6 +126,7 @@ const AdminLogin = () => {
 					Logga in
 				</button>
 			</form>
+			<Footer/>
 		</>
 	);
 };

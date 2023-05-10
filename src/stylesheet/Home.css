@@ -30,24 +30,57 @@
 /* -------------- END Header --------------- */
 
 /* -------------- HOME MAIN-CONTENT --------------- */
-.home-pic{
+.home-pic {
 	width: 100%;
-	height: 56em;
+	height: auto;
+	object-fit: cover;
 	border-radius: 0 0 2% 2%;
 	box-shadow: 0em 0.1em 1em rgb(91, 151, 151);
 }
 
 .content{
+	background-color: antiquewhite;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: absolute;
+	top: 30%;
+	left: 34%;
+	/* transform: translate(-50%, -50%); */
+	border-radius: 10%;
+	max-width: 90%;
+	padding: 1em;
+	width: 23em;
 }
-.title{
-	margin: 1em 0 1em 0em;
+
+.title {
+	margin: 0.5em 0;
+	font-size: 1.2em;
 }
-.description{
-	padding: 0 1em;
+
+.description {
+	padding: 0.5em;
+	text-align: justify;
+	font-size: 0.9em;
 }
+
+@media screen and (max-width: 500px) {
+	.home-pic {
+		 height: auto;
+		 margin-bottom: 1em;
+	}
+
+	.content {
+		 position: static;
+		 flex-direction: column;
+		 justify-content: center;
+		 align-items: center;
+		 max-width: 90%;
+		 padding: 1em;
+	}
+}
+
+
 
 /* -------------- END MAIN-CONTENT --------------- */
 
@@ -61,7 +94,7 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	position: fixed;
+	position: absolute;
   	left: 0;
  	bottom: 0;
 }
@@ -75,6 +108,5 @@
 }
 
 /* -------------- END FOOTER --------------- */
-
 
 

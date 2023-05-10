@@ -13,12 +13,12 @@ const Root = () => {
 				<NavLink className="products link" to="/products">
 					Products
 				</NavLink>
-				<NavLink className="error link" to="/error">
+				{/* <NavLink className="error link" to="/error">
 					Error
-				</NavLink>
-				<NavLink className="details link" to="/details/1">
+				</NavLink> */}
+				{/* <NavLink className="details link" to="/details/1">
 					Detaljer
-				</NavLink>
+				</NavLink> */}
 				<NavLink className="icon link" to="/admin">
 					<FontAwesomeIcon icon={faRightToBracket} />
 				</NavLink>

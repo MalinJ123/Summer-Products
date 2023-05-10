@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylesheet/AdminUser.css";
-import AdminProducts from "./AdminProducts";
+// import AdminProducts from "./AdminProducts";
+import addProduct from '../data/addProducts.js'
 
 const AdminUser = () => {
 	const [products, setProducts] = useState([]);
@@ -47,9 +48,17 @@ const AdminUser = () => {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		const product = { title, productUrl, description, price: productPrice };
-
+		const product = { title, productUrl, description, price: productPrice};
+		console.log('submit körs')
 		setProducts([...products, product]);
+		addProduct({
+			name : title, 
+			price: productPrice,
+			description: description,
+			picture: productUrl,
+
+			// { name, price, description, picture, shopid }
+		}) 
 	}
 
 	const navigate = useNavigate();
@@ -101,7 +110,7 @@ const AdminUser = () => {
 							value={productUrl}
 							onChange={handleUrlChange}
 						/>
-						{productUrl && <img src={productUrl} alt="" />}
+						{productUrl && <img className="AdminUrl" src={productUrl} alt="" />}
 					</label>
 
 					{/* Produkt BESKRIVNING */}
@@ -141,13 +150,13 @@ const AdminUser = () => {
 							onChange={handlePriceChange}
 						/>
 					</label>
-					<button className="adminFormBtn" onClick={handleClick}>
+					<button type = "submit" className="adminFormBtn" onClick={handleClick}>
   Lägg till
 </button>
 
 
 					<button className="admin-details">
-						<Link to="/admin/products"> Gå till Produkt sidan</Link>
+						<Link to="/admin/products"> Gå till Admin Produkt </Link>
 					</button>
 				</form>
 			</section>

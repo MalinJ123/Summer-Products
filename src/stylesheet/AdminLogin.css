@@ -103,4 +103,10 @@ font-size: 12px;
 	.error-message {
 		font-size: 0.9em;
 	 }
+
+	 
+	.admin-pic{
+		width: 100vh;
+		height: auto;
+	}
 }

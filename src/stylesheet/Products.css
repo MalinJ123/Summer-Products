@@ -34,6 +34,12 @@
 	text-decoration: none;
 	color: black;
 }
+.products-title:hover{
+	font-size: larger;
+	padding: 0.9em;
+	color: #4538d1;
+}
+
 .product-price {
 	margin-top: 1em;
 	display: flex;

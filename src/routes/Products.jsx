@@ -3,7 +3,7 @@ import { useLoaderData, Link } from "react-router-dom";
 import "../stylesheet/Products.css";
 import Footer from "../components/Footer";
 import { getProducts } from "../data/getProducts.js";
-
+import { useRecoilState } from "recoil";
 export const loader = () => getProducts();
 
 const Products = () => {
@@ -43,6 +43,26 @@ const Products = () => {
     }
   };
 
+  function handleAddToCart() {
+		console.log(product.id);
+		const existingItem = cartItems.find(
+			(cartItem) => cartItem.id === product.id
+		);
+
+		if (existingItem) {
+			const updatedCartItems = cartItems.map((cartItem) =>
+				cartItem.id === product.id
+					? { ...cartItem, amount: cartItem.amount + 1 }
+					: cartItem
+			);
+			setCartItems(updatedCartItems);
+			console.log("updated item with new amount");
+		} else {
+			setCartItems([...cartItems, { ...product, amount: 1 }]);
+			console.log("added new item");
+		}
+	}
+
   const sortedProducts = sortProductsByPrice(sortProductsByName(filteredProducts));
 
   return (
@@ -77,6 +97,12 @@ const Products = () => {
             <div className="product-price">
               <p>Price: {price} kr</p>
             </div>
+            <button
+						className="detail-button"
+						onClick={() => handleAddToCart()}
+					>
+						Lägg till
+					</button>
           </div>
         ))}
       </div>
