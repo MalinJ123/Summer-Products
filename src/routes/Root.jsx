@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
+
 const Root = () => {
 	return (
 		<>
 			<header className="header-body">
 				<NavLink className="header link" to="/">
-					Home
+					Hem
 				</NavLink>
 				<NavLink className="products link" to="/products">
-					Products
+					Produkter
 				</NavLink>
 				{/* <NavLink className="error link" to="/error">
 					Error
@@ -38,3 +39,11 @@ const Root = () => {
 };
 
 export default Root;
+
+
+
+// import { faTh, faMaskSnorkel } from "@fortawesome/free-solid-svg-icons";
+
+{/* <NavLink className="header link" to="/">
+<FontAwesomeIcon icon={[ faTh, faMaskSnorkel]} />
+</NavLink> */}

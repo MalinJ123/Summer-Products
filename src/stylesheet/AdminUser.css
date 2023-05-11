@@ -9,6 +9,7 @@
 
 .title-container{
 	margin-top:2em;
+	
 }
 
 .admin-container {
@@ -56,3 +57,24 @@
 	padding: 0.2em 0 0 0.3em;
  }
  
+ .AdminUsers{
+	display: flex;
+	margin-left: 3em; 
+	position: absolute;
+	left: 5%;
+	top: 10%;
+
+ }
+  .deleteUserBtn-container{
+	align-items: center;
+	display: flex;
+	padding-left: 1em;
+ }
+
+ .deleteUser{
+width: 6em;
+height: 2em;
+
+
+ }
+

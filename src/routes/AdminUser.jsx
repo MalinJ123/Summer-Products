@@ -4,8 +4,6 @@ import "../stylesheet/AdminUser.css";
 // import AdminProducts from "./AdminProducts";
 import addProduct from "../data/addProducts.js";
 
-
-
 const AdminUser = () => {
 	const [products, setProducts] = useState([]);
 	const [isFieldTouched, setIsFieldTouched] = useState(false);
@@ -41,23 +39,23 @@ const AdminUser = () => {
 
 	function handleBlur() {
 		setIsFieldTouched(true);
-		if (title.trim() === '' || description.trim() === '') {
-		  setIsFieldEmpty(true);
+		if (title.trim() === "" || description.trim() === "") {
+			setIsFieldEmpty(true);
 		} else {
-		  setIsFieldEmpty(false);
+			setIsFieldEmpty(false);
 		}
 		if (title.length < 5) {
-		  setTitleIsValid('Atleast 5 characters');
+			setTitleIsValid("Atleast 5 characters");
 		} else {
-		  setTitleIsValid(false);
+			setTitleIsValid(false);
 		}
 		if (description.length < 10) {
-		  setDescriptionIsValid('Atleast 10 characters');
+			setDescriptionIsValid("Atleast 10 characters");
 		} else {
-		  setDescriptionIsValid(false);
+			setDescriptionIsValid(false);
 		}
-	 }
-	 
+	}
+
 	function handleClick() {
 		console.log("btn is clicked");
 		console.log(products);
@@ -73,8 +71,6 @@ const AdminUser = () => {
 			price: productPrice,
 			description: description,
 			picture: productUrl,
-
-			// { name, price, description, picture, shopid }
 		});
 	}
 
@@ -92,6 +88,16 @@ const AdminUser = () => {
 					<button className="admin-button" onClick={handleLogout}>
 						logga ut
 					</button>
+				</div>
+				<div className="AdminUsers">
+					<div>
+					<p className="title">Alla Användare: </p>
+						<p className="">Användare: </p>
+						<p>Lösenord: </p>
+					</div>
+					<div className="deleteUserBtn-container">
+						<button className="deleteUser">Ta bort</button>
+					</div>
 				</div>
 
 				{/* TITEL */}
