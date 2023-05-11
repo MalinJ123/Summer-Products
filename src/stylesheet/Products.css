@@ -4,9 +4,11 @@
 	flex-direction: column;
 }
 
+.sort-dropdown {
+	padding: 0.6em;
+}
 .grid-container {
 	display: grid;
-	/* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 20px;
 	margin: 2em 3em;
@@ -15,8 +17,9 @@
 .product {
 	background-color: #e9e7e7;
 	padding: 20px;
-	border-radius: 5px;
 	max-width: 16em;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 10.1);
+	border-radius: 8px;
 }
 .productTitle {
 	margin-top: 2em;
@@ -130,5 +133,13 @@
 @media screen and (max-width: 768px) {
 	.grid-container {
 		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.search-input {
+		margin-left: 1em;
+	}
+
+	.sort-dropdown {
+		margin-left: 1em;
 	}
 }

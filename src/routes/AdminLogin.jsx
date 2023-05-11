@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 // import {addUser} from "../data/addUser";
 import addUser from "../data/addProducts.js";
-
 import "../stylesheet/AdminLogin.css";
 // import '../stylesheet/Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 
 export const loader = () => addUser();
 
@@ -28,7 +28,8 @@ const AdminLogin = () => {
 	const formIsValid = usernameIsValid && passwordIsValid;
 
 	function handleRegister(e) {
-e.preventDefault()
+		// const history = useHistory();
+		e.preventDefault();
 		if (registerUsername) {
 			if (registerPassword === registerRepeatPassword) {
 				addUser({
@@ -36,8 +37,16 @@ e.preventDefault()
 					password: registerPassword,
 				});
 				console.log("nu har du lagt till användare");
+				navigate("/admin/user");
 			}
 		}
+	}	
+	
+	function setFormLogin() {
+		setForm("login");
+	}
+	function setFormRegister() {
+		setForm("register");
 	}
 
 	const validateUsername = () => {
@@ -74,15 +83,9 @@ e.preventDefault()
 		}
 	};
 
-	function setFormLogin() {
-		setForm("login");
-	}
-	function setFormRegister() {
-		setForm("register");
-	}
+
 	return (
 		<div className="admin-pic">
-		
 			{form === "login" ? (
 				<form
 					className="form-container"
@@ -109,7 +112,7 @@ e.preventDefault()
 					</div>
 					<div className="label-container">
 						<label className="input-text" htmlFor="">
-							<p className="text">Username</p>
+							<p className="text">Användarnamn</p>
 							<input
 								className={
 									usernameIsValid === false
@@ -131,7 +134,7 @@ e.preventDefault()
 						</label>
 
 						<label htmlFor="">
-							<p className="text">Password</p>
+							<p className="text">Lösenord</p>
 							<input
 								className={
 									passwordIsValid === false
@@ -169,8 +172,10 @@ e.preventDefault()
 					</button>
 				</form>
 			) : (
-				<form className="form-container"	onSubmit={(e) => handleRegister(e)}>
-					
+				<form
+					className="form-container"
+					onSubmit={(e) => handleRegister(e)}
+				>
 					<div className="close-button">
 						<Link className="" to="/">
 							<FontAwesomeIcon icon={faTimes} />
@@ -192,7 +197,7 @@ e.preventDefault()
 					</div>
 					<div className="label-container">
 						<label className="input-text" htmlFor="">
-							<p className="text">Username</p>
+							<p className="text">Användarnamn</p>
 							<input
 								className={
 									usernameIsValid === false
@@ -209,7 +214,7 @@ e.preventDefault()
 							/>
 						</label>
 						<label htmlFor="">
-							<p className="text">Password</p>
+							<p className="text">Lösenord</p>
 							<input
 								className={
 									passwordIsValid === false
@@ -226,11 +231,12 @@ e.preventDefault()
 							/>
 						</label>
 						<label htmlFor="">
-							<p className="text">Repeat Password</p>
+							<p className="text">Upprepa lösenord</p>
 							<input
 								className={
-									passwordIsValid === false
-										? "invalid"
+									passwordIsValid === false &&
+									registerPassword.length < 7 
+										? "invalid" 
 										: passwordIsValid === true
 										? "valid"
 										: ""
@@ -245,8 +251,8 @@ e.preventDefault()
 					</div>
 					<button
 						type="submit"
-						className="admin-button"
-						// onClick={handleRegister}
+						className="admin-button button"
+						onClick={handleRegister}
 						disabled={
 							!registerUsername ||
 							!registerPassword ||
@@ -254,7 +260,7 @@ e.preventDefault()
 							registerPassword !== registerRepeatPassword
 						}
 					>
-						Registrera
+						Registrera / logga in 
 					</button>
 				</form>
 			)}
@@ -265,3 +271,9 @@ e.preventDefault()
 };
 
 export default AdminLogin;
+
+
+
+
+
+

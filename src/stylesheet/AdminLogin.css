@@ -1,10 +1,8 @@
-.admin-pic{
-
+.admin-pic {
 	background-image: url("../assets/paradise.jpg");
 	background-size: cover;
 	height: 94.7vh;
 	width: auto;
-	
 }
 
 .form-container {
@@ -30,53 +28,54 @@
 	cursor: pointer;
 	position: relative;
 	right: -7em;
-	top: -1em; 
- }
-.Admin-Login{
+	top: -1em;
+}
+.Admin-Login {
 	margin-bottom: 2em;
 	display: flex;
 	flex-direction: row;
 	gap: 2em;
 }
 
-.bold{
+.bold {
 	font-weight: bold;
 }
 .text {
 	font-size: 20px;
-
 }
 
-.admin-button {
+/* .admin-button {
 	margin-top: 2em;
-	width: 90%;
+	
+	
+} */
+
+.button{
+	margin-top:5em;
+	width: 58%;
 	cursor: pointer;
-
 }
-
-.label-container{
+.label-container {
 	height: 10em;
 	display: flex;
 	flex-direction: column;
 	/* justify-content: space-between; */
 }
 
-input{
+input {
 	margin-bottom: 1em;
 	height: 2.5em;
 	width: 17em;
 	/* cursor: pointer; */
-	padding: 0.2em 0 0 0.3em; 
+	padding: 0.2em 0 0 0.3em;
 }
 
-textarea::placeholder{
-padding: 0.3em 0 0 0.3em;
-font-size: 12px;
+textarea::placeholder {
+	padding: 0.3em 0 0 0.3em;
+	font-size: 12px;
 }
 .invalid {
 	border: 3px solid red;
-
-
 }
 .valid {
 	border: 3px solid rgb(40, 219, 67);
@@ -91,29 +90,39 @@ font-size: 12px;
 	font-weight: bold;
 	padding: 0.5em;
 	border-radius: 5px;
- }
- 
+}
+
 @media screen and (max-width: 767px) {
 	.form-container {
 		max-width: 320px;
 	}
 	.close-button {
-	
 		right: -5.3em;
-		top: -1em; 
-	 }
-	 .input {
+		top: -1em;
+	}
+	.input {
 		margin-bottom: 1em;
 		height: 2.5em;
 		width: 16em;
 	}
 	.error-message {
 		font-size: 0.9em;
-	 }
-
-	 
-	.admin-pic{
-		width: 100vh;
-		height: auto;
 	}
+
+	.admin-pic{
+
+		background-image: url("../assets/paradise.jpg");
+		background-size: cover;
+		height: 94.7vh;
+		width: auto;
+		
+	}
+}
+.details-btn{
+	padding:0.3em;
+}
+
+.button-container{
+justify-content: space-between;
+
 }

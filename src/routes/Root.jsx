@@ -22,9 +22,9 @@ const Root = () => {
 				<NavLink className="icon link" to="/admin">
 					<FontAwesomeIcon icon={faRightToBracket} />
 				</NavLink>
-				<NavLink className="icon link" to="/admin/user">
+				{/* <NavLink className="icon link" to="/admin/user">
 					AdminUser
-				</NavLink>
+				</NavLink> */}
 
 				<NavLink className="icon link" to="/cart">
 					<FontAwesomeIcon icon={faShoppingCart} />

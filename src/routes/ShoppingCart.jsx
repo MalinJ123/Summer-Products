@@ -68,29 +68,33 @@ function ShoppingCart() {
 
 	return (
 		<div className="shopping-container">
-			<h2>Shopping cart</h2>
+			<h2 className="cartTitle">Shopping cart</h2>
 			<ul className="cart-list">
 				{cartItems.map((item, index) => (
 					<li className="list-item" key={index}>
-						{/* <img src={item.image} alt={item.name} /> */}
-						<p>{item.name}</p>
+						<div className="title-price-container">
+							<p>{item.name}</p>
+							<p className="price">{item.price * item.amount}</p>
+						</div>
 
-						<p>{item.price * item.amount}</p>
-						<button
-							className="btn"
-							onClick={() => handleAddToCart(index)}
-						>
-							+
-						</button>
-						<p>{item.amount}</p>
 						<button
 							className="btn"
 							onClick={() => handleRemoveFromCart(index)}
 						>
 							-
 						</button>
+
+						<p className="amount">{item.amount}</p>
+
 						<button
 							className="btn"
+							onClick={() => handleAddToCart(index)}
+						>
+							+
+						</button>
+
+						<button
+							className="btn btn-remove"
 							onClick={() => handleRemoveAll(index)}
 						>
 							Remove all
@@ -98,7 +102,7 @@ function ShoppingCart() {
 					</li>
 				))}
 			</ul>
-			<p>Total price: {totalPrice} Kr</p>
+			<p className="Totalprice">Total price: {totalPrice} Kr</p>
 
 			<button className="detail-button">Confirm</button>
 			<button className="detail-button" onClick={handleClearCart}>
