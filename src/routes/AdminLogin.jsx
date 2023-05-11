@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 // import {addUser} from "../data/addUser";
-import addUser from "../data/addProducts.js";
+import addUser from "../data/addUser.js";
 import "../stylesheet/AdminLogin.css";
 // import '../stylesheet/Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import { shopId } from "../data/constants";
+// import { getUsers } from "../data/getUsers";
 
 export const loader = () => addUser();
 
@@ -27,21 +29,29 @@ const AdminLogin = () => {
 
 	const formIsValid = usernameIsValid && passwordIsValid;
 
+	const navigate = useNavigate();
+
 	function handleRegister(e) {
 		// const history = useHistory();
 		e.preventDefault();
 		if (registerUsername) {
 			if (registerPassword === registerRepeatPassword) {
 				addUser({
+					shopid: shopId,
 					username: registerUsername,
 					password: registerPassword,
 				});
 				console.log("nu har du lagt till användare");
-				navigate("/admin/user");
+				navigate("/admin/user", { state: { isAuthorized: true } });
 			}
 		}
-	}	
-	
+	}
+
+	// function checkUsers() {
+	// 	console.log(getUsers());
+	// }
+	// checkUsers();
+
 	function setFormLogin() {
 		setForm("login");
 	}
@@ -70,8 +80,6 @@ const AdminLogin = () => {
 		}
 	};
 
-	const navigate = useNavigate();
-
 	const handleSubmit = (e) => {
 		e.preventDefault(); //förhindra sidan att laddas om vid submit
 		if (formIsValid) {
@@ -82,7 +90,6 @@ const AdminLogin = () => {
 			// visa felmeddelande för användaren
 		}
 	};
-
 
 	return (
 		<div className="admin-pic">
@@ -235,8 +242,8 @@ const AdminLogin = () => {
 							<input
 								className={
 									passwordIsValid === false &&
-									registerPassword.length < 7 
-										? "invalid" 
+									registerPassword.length < 7
+										? "invalid"
 										: passwordIsValid === true
 										? "valid"
 										: ""
@@ -260,7 +267,7 @@ const AdminLogin = () => {
 							registerPassword !== registerRepeatPassword
 						}
 					>
-						Registrera / logga in 
+						Registrera / logga in
 					</button>
 				</form>
 			)}
@@ -271,9 +278,3 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
-
-
-
-
-
-

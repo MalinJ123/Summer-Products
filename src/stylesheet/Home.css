@@ -14,7 +14,6 @@
 	display: flex;
 	justify-content: space-around;
 	height: 3em;
-	padding: 0.5em 0.5em 0 0.5em;
 	transition: 0.5s all linear;
 	/* opacity: 0.9; */
 	align-items: center;
@@ -23,6 +22,7 @@
 .link {
 	color: white;
 	text-decoration: none;
+	margin: 2em;
 }
 .link:hover {
 	color: rgb(70, 246, 246);
@@ -40,6 +40,13 @@
 	height: 94.7vh;
 	width: auto;
 }
+
+
+.material-symbols-outlined:nth-of-type(4){
+border: 2px solid green;
+font-size: 28px;
+}
+
 .home-pic {
 	width: 100%;
 
@@ -61,6 +68,10 @@
 	max-width: 90%;
 	padding: 1em;
 	width: 23em;
+}
+
+.card{
+	margin: 1em;
 }
 
 .title {
@@ -93,6 +104,9 @@
 		max-width: 90%;
 		padding: 1em;
 		width: 23em;
+	}
+	.gone{
+		display: none;
 	}
 }
 

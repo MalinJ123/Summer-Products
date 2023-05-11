@@ -8,12 +8,22 @@ const Home = () => {
 			<div className="content">
 				<h2 className="title"> Home </h2>
 				<p className="description">
-					survived not only five centuries, but also the leap into
-					electronic typesetting, remaining essentially unchanged. It
-					was popularised in the 1960s with the release of Letraset
-					sheets containing Lorem Ipsum passages, and more recently
-					with desktop publishing software like Aldus PageMaker
-					including versions of Lorem Ipsu
+					Dykning är en fantastisk sport som ger oss möjlighet att
+					utforska den underbara världen under vattenytan. Oavsett om
+					du är en erfaren dykare eller just har upptäckt denna
+					spännande hobby, så finns det inget som kan jämföra med att
+					ha din egen utrustning. Att äga din egen dykutrustning ger
+					dig frihet, självständighet och en känsla av säkerhet när du
+					beger dig ut på dina äventyr.
+				</p>
+				<p className="description card">
+					Att köpa dyksaker kan verka som en stor investering i
+					början, men det är verkligen värt det. När du har din egen
+					utrustning kan du anpassa den efter dina specifika behov och
+					preferenser. Du kan välja en mask som passar perfekt på ditt
+					ansikte, en regulator som ger dig en bekväm
+					andningsupplevelse och en våtdräkt som ger dig rätt skydd
+					och rörelsefrihet.
 				</p>
 			</div>
 

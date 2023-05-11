@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../stylesheet/AdminUser.css";
 // import AdminProducts from "./AdminProducts";
 import addProduct from "../data/addProducts.js";
+import getUsers from "../data/getUsers";
+import { url } from "../data/constants";
 
 const AdminUser = () => {
 	const [products, setProducts] = useState([]);
@@ -19,6 +21,16 @@ const AdminUser = () => {
 	// Beskrivning
 	const [description, setDescription] = useState("");
 	const [descriptionIsValid, setDescriptionIsValid] = useState(false);
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// const [isLoggedIn, setIsloggedIn] = useState(location.state.isAuthorized);
+
+	// function checkUsers() {
+	// 	console.log(getUsers());
+	// }
+	// checkUsers();
 
 	function handleTitleChange(event) {
 		setTitle(event.target.value);
@@ -74,124 +86,127 @@ const AdminUser = () => {
 		});
 	}
 
-	const navigate = useNavigate();
-
 	function handleLogout() {
 		navigate("/admin");
 	}
 
 	return (
 		<>
-			<section className="Admin-body">
-				<div className="title-container">
-					<h2>AdminUser</h2>
-					<button className="admin-button" onClick={handleLogout}>
-						logga ut
-					</button>
-				</div>
-				<div className="AdminUsers">
-					<div>
-					<p className="title">Alla Användare: </p>
-						<p className="">Användare: </p>
-						<p>Lösenord: </p>
+				<section className="Admin-body">
+					<div className="title-container">
+						<h2>AdminUser</h2>
+						<button className="admin-button" onClick={handleLogout}>
+							logga ut
+						</button>
 					</div>
-					<div className="deleteUserBtn-container">
-						<button className="deleteUser">Ta bort</button>
+					<div className="AdminUsers">
+						<div>
+							<p className="title">Alla Användare: </p>
+							<p className="">Användare: </p>
+							<p>Lösenord: </p>
+						</div>
+						<div className="deleteUserBtn-container">
+							<button className="deleteUser">Ta bort</button>
+						</div>
 					</div>
-				</div>
 
-				{/* TITEL */}
-				<form className="admin-container" onSubmit={handleSubmit}>
-					<h2 className="AdminForm-title">Lägg till Produkter</h2>
-					<label className="input-text" htmlFor="">
-						<p className="text">Produkt Titel</p>
-						<input
-							type="text"
-							placeholder="Produkt namn"
-							value={title}
-							onChange={handleTitleChange}
-							onBlur={handleBlur}
-							className={
-								isFieldTouched &&
-								(isFieldEmpty || !!titleIsValid)
-									? "invalid"
-									: ""
-							}
-						/>
-						{isFieldTouched &&
-							!!titleIsValid && ( // should check if titleIsValid is not false
+					{/* TITEL */}
+					<form className="admin-container" onSubmit={handleSubmit}>
+						<h2 className="AdminForm-title">Lägg till Produkter</h2>
+						<label className="input-text" htmlFor="">
+							<p className="text">Produkt Titel</p>
+							<input
+								type="text"
+								placeholder="Produkt namn"
+								value={title}
+								onChange={handleTitleChange}
+								onBlur={handleBlur}
+								className={
+									isFieldTouched &&
+									(isFieldEmpty || !!titleIsValid)
+										? "invalid"
+										: ""
+								}
+							/>
+							{isFieldTouched &&
+								!!titleIsValid && ( // should check if titleIsValid is not false
+									<span className="error-message">
+										{titleIsValid}
+									</span>
+								)}
+						</label>
+						{/* LÄÄÄNK BILD URL */}
+						<label htmlFor="">
+							<p className="text">Produkt Url</p>
+							<input
+								placeholder=" https://"
+								type="text"
+								value={productUrl}
+								onChange={handleUrlChange}
+							/>
+							{productUrl && (
+								<img
+									className="AdminUrl"
+									src={productUrl}
+									alt=""
+								/>
+							)}
+						</label>
+
+						{/* Produkt BESKRIVNING */}
+						<label htmlFor="">
+							<p className="text">Produkt beskrivning</p>
+							<textarea
+								name=""
+								placeholder="Beskriv produkten ni säljer"
+								id=""
+								cols="30"
+								rows="6"
+								type="text"
+								value={description}
+								onChange={handleDescriptionChange}
+								onBlur={handleBlur}
+								className={
+									isFieldTouched &&
+									(isFieldEmpty || !!descriptionIsValid)
+										? "invalid"
+										: ""
+								}
+							/>
+							{isFieldTouched && !!descriptionIsValid && (
 								<span className="error-message">
-									{titleIsValid}
+									{descriptionIsValid}
 								</span>
 							)}
-					</label>
-					{/* LÄÄÄNK BILD URL */}
-					<label htmlFor="">
-						<p className="text">Produkt Url</p>
-						<input
-							placeholder=" https://"
-							type="text"
-							value={productUrl}
-							onChange={handleUrlChange}
-						/>
-						{productUrl && (
-							<img className="AdminUrl" src={productUrl} alt="" />
-						)}
-					</label>
+						</label>
 
-					{/* Produkt BESKRIVNING */}
-					<label htmlFor="">
-						<p className="text">Produkt beskrivning</p>
-						<textarea
-							name=""
-							placeholder="Beskriv produkten ni säljer"
-							id=""
-							cols="30"
-							rows="6"
-							type="text"
-							value={description}
-							onChange={handleDescriptionChange}
-							onBlur={handleBlur}
-							className={
-								isFieldTouched &&
-								(isFieldEmpty || !!descriptionIsValid)
-									? "invalid"
-									: ""
-							}
-						/>
-						{isFieldTouched && !!descriptionIsValid && (
-							<span className="error-message">
-								{descriptionIsValid}
-							</span>
-						)}
-					</label>
+						{/* PRIS  */}
+						<label htmlFor="">
+							<p className="text">Pris (kr)</p>
+							<input
+								type="text"
+								placeholder="121"
+								value={productPrice}
+								onChange={handlePriceChange}
+							/>
+						</label>
+						<button
+							type="submit"
+							className="adminFormBtn"
+							onClick={handleClick}
+						>
+							Lägg till
+						</button>
 
-					{/* PRIS  */}
-					<label htmlFor="">
-						<p className="text">Pris (kr)</p>
-						<input
-							type="text"
-							placeholder="121"
-							value={productPrice}
-							onChange={handlePriceChange}
-						/>
-					</label>
-					<button
-						type="submit"
-						className="adminFormBtn"
-						onClick={handleClick}
-					>
-						Lägg till
-					</button>
-
-					<button className="admin-details">
-						<Link to="/admin/products">
-							{" "}
-							Gå till Admin Produkt{" "}
-						</Link>
-					</button>
-				</form>
-			</section>
+						<button className="admin-details">
+							<Link to="/admin/products">
+								{" "}
+								Gå till Admin Produkt{" "}
+							</Link>
+						</button>
+					</form>
+				</section>
+			
 		</>
 	);
 };
