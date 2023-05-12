@@ -1,6 +1,6 @@
 async function addUser(oneUser) {
-	// [POST] ?action=add-user - add a new user. Request body: { shopid, username, password }
-	console.log("adding user...", oneUser);
+	console.log("adding user...");
+	oneUser.shopid = shopId
 	const options = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },

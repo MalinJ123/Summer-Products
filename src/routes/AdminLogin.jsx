@@ -1,17 +1,13 @@
-import paradise from "../assets/paradise.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-// import {addUser} from "../data/addUser";
-import addUser from "../data/addUser.js";
+import addUser from "../data/addProducts.js";
 import "../stylesheet/AdminLogin.css";
-// import '../stylesheet/Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { shopId } from "../data/constants";
-// import { getUsers } from "../data/getUsers";
 
 export const loader = () => addUser();
 
@@ -19,20 +15,21 @@ const AdminLogin = () => {
 	const [form, setForm] = useState("login");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [usernameIsValid, setUsernameIsValid] = useState(null);
+	const [passwordIsValid, setPasswordIsValid] = useState(null);
 
+	//Registrera användare
 	const [registerUsername, setRegisterUsername] = useState("");
 	const [registerPassword, setRegisterPassword] = useState("");
 	const [registerRepeatPassword, setRegisterRepeatPassword] = useState("");
 
-	const [usernameIsValid, setUsernameIsValid] = useState(null);
-	const [passwordIsValid, setPasswordIsValid] = useState(null);
+	const [error, setError] = useState(null);
 
 	const formIsValid = usernameIsValid && passwordIsValid;
 
 	const navigate = useNavigate();
 
 	function handleRegister(e) {
-		// const history = useHistory();
 		e.preventDefault();
 		if (registerUsername) {
 			if (registerPassword === registerRepeatPassword) {
@@ -42,15 +39,11 @@ const AdminLogin = () => {
 					password: registerPassword,
 				});
 				console.log("nu har du lagt till användare");
-				navigate("/admin/user", { state: { isAuthorized: true } });
+				navigate("/admin/user");
 			}
 		}
-	}
+	}	
 
-	// function checkUsers() {
-	// 	console.log(getUsers());
-	// }
-	// checkUsers();
 
 	function setFormLogin() {
 		setForm("login");
@@ -203,15 +196,14 @@ const AdminLogin = () => {
 						</a>
 					</div>
 					<div className="label-container">
-						<label className="input-text" htmlFor="">
+						<label htmlFor="">
 							<p className="text">Användarnamn</p>
 							<input
 								className={
-									usernameIsValid === false
+									registerUsername.trim().length === 0 ||
+									registerUsername.length < 5
 										? "invalid"
-										: usernameIsValid === true
-										? "valid"
-										: ""
+										: "valid"
 								}
 								type="text"
 								value={registerUsername}
@@ -219,14 +211,23 @@ const AdminLogin = () => {
 									setRegisterUsername(e.target.value)
 								}
 							/>
+							{registerUsername.trim().length === 0 ? (
+								<div className="error-messages">
+									Du måste fylla i ett användarnamn
+								</div>
+							) : registerUsername.length < 5 ? (
+								<div className="error-messages">
+									Minst 5 tecken
+								</div>
+							) : null}
 						</label>
 						<label htmlFor="">
 							<p className="text">Lösenord</p>
 							<input
 								className={
-									passwordIsValid === false
+									registerPassword.length < 5
 										? "invalid"
-										: passwordIsValid === true
+										: registerPassword
 										? "valid"
 										: ""
 								}
@@ -236,15 +237,21 @@ const AdminLogin = () => {
 									setRegisterPassword(e.target.value)
 								}
 							/>
+							{registerPassword.length < 5 ? (
+								<div className="error-messages">
+									Minst 5 tecken
+								</div>
+							) : null}
 						</label>
 						<label htmlFor="">
 							<p className="text">Upprepa lösenord</p>
 							<input
 								className={
-									passwordIsValid === false &&
-									registerPassword.length < 7
+									registerRepeatPassword.length < 5 ||
+									registerRepeatPassword !== registerPassword
 										? "invalid"
-										: passwordIsValid === true
+										: registerRepeatPassword ===
+										  registerPassword
 										? "valid"
 										: ""
 								}
@@ -254,6 +261,15 @@ const AdminLogin = () => {
 									setRegisterRepeatPassword(e.target.value)
 								}
 							/>
+							{registerRepeatPassword.length < 5 ? (
+								<div className="error-messages">
+									Lösenord: Minst 5 tecken
+								</div>
+							) : registerRepeatPassword !== registerPassword ? (
+								<div className="error-messages">
+									Lösenordet matchar inte 
+								</div>
+							) : null}
 						</label>
 					</div>
 					<button
