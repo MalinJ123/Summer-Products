@@ -94,7 +94,7 @@ textarea::placeholder {
 	margin-top: -1em;
 	color: rgb(141, 17, 17);
 	background-color: rgba(255, 0, 0, 0.2);
-	font-size: 1.1em;
+	font-size: 0.9em;
 	font-weight: bold;
 	padding: 0.5em;
 	border-radius: 5px;

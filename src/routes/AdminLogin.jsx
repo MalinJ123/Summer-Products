@@ -135,7 +135,7 @@ const AdminLogin = () => {
 							/>
 							{!usernameIsValid && username.length > 0 && (
 								<p className="error-message">
-									Username = Admin{" "}
+									Användarnamn = admin{" "}
 								</p>
 							)}
 						</label>
@@ -157,7 +157,7 @@ const AdminLogin = () => {
 							/>
 							{!passwordIsValid && password.length > 0 && (
 								<p className="error-message">
-									Password = password{" "}
+									Lösenord = password{" "}
 								</p>
 							)}
 							{passwordIsValid}

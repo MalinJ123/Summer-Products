@@ -15,6 +15,8 @@ const Products = () => {
 	const [sortOrder, setSortOrder] = useState("");
 	// const [cartItems, setCartItems] = useRecoilState(cartState); // kommer ifrån PRODUCT DETAILS
 
+
+
 	const handleChange = (event) => {
 		setSearchValue(event.target.value);
 	};

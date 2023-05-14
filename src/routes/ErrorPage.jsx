@@ -10,7 +10,7 @@ const ErrorPage = () => {
 		<>
 		<section className="ErrorPage-container">
 			<img src={depp}  alt="bild som beskriver känslan att inte komma åt hemsidan" />
-			<h2>This side does not exit</h2>
+			<h2>This side does not exist</h2>
 			<p>Please check the URL again</p>
 			<button className="detail-button">
 				<Link to="/"> Tillbaka</Link>
