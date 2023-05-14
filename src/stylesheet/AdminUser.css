@@ -47,7 +47,7 @@
 	font-size: 132%;
 	margin: 2em 0 2em 0;
 }
-
+.Isinvalid,
 .invalid {
 	border: 3px solid red;
 }

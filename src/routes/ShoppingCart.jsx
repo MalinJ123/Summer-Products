@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
@@ -9,6 +9,8 @@ function ShoppingCart() {
 	const [cartItems, setCartItems] = useRecoilState(cartState);
 	const setCart = useSetRecoilState(cartState);
 	const allProducts = useLoaderData();
+	const navigate = useNavigate();
+	const [handleMessage, setHandleMessage] = useState("");
 
 	function handleAddToCart(index) {
 		setCartItems((prevCartItems) =>
@@ -19,6 +21,11 @@ function ShoppingCart() {
 			)
 		);
 	}
+
+	function payGoToHome() {
+		navigate("/");
+	}
+
 	function handleClearCart() {
 		setCart([]);
 	}
@@ -104,7 +111,8 @@ function ShoppingCart() {
 			</ul>
 			<p className="Totalprice">Totalt: {totalPrice} Kr</p>
 
-			<button className="detail-button">Gå till betalning</button>
+			<button className="detail-button" onClick={payGoToHome}>Betala </button>
+
 			<button className="detail-button" onClick={handleClearCart}>
 				Töm kundvagn
 			</button>

@@ -24,12 +24,14 @@ const AdminUser = () => {
 	// TITEL
 	const [title, setTitle] = useState("");
 	const [titleIsValid, setTitleIsValid] = useState("");
+	const [titleIsInValid, setTitleIsInValid] = useState("");
 
 	// Beskrivning
 	const [description, setDescription] = useState("");
 	const [descriptionIsValid, setDescriptionIsValid] = useState("");
+	const [descriptionIsInvalid, setDescriptionIsInvalid] = useState("");
 
-	const [message, setMessage] = useState(""); // new state variable
+	const [message, setMessage] = useState("");
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -53,36 +55,44 @@ const AdminUser = () => {
 
 	function handleBlur() {
 		setIsFieldTouched(true);
-		if (title.trim() === "" || description.trim() === "") {
-			setIsFieldEmpty(true);
-		} else {
-			setIsFieldEmpty(false);
-		}
-		if (title.length < 5) {
-			setTitleIsValid("Atleast 5 characters");
-		} else {
+
+		if (title.trim() === "") {
+			setTitleIsInValid("Title is required");
 			setTitleIsValid("");
-		}
-		if (description.length < 10) {
-			setDescriptionIsValid("Atleast 10 characters");
+		} else if (title.length < 5) {
+			setTitleIsInValid("At least 5 characters long");
+			setTitleIsValid("");
 		} else {
+			setTitleIsValid("valid");
+			setTitleIsInValid("");
+		}
+
+		if (description.trim() === "") {
+			setDescriptionIsInvalid("Description is required");
 			setDescriptionIsValid("");
+		} else if (description.length < 10) {
+			setDescriptionIsInvalid(
+				"At least 10 characters long"
+			);
+			setDescriptionIsValid("");
+		} else {
+			setDescriptionIsValid("valid");
+			setDescriptionIsInvalid("");
 		}
 	}
 
 	function handleClick() {
 		console.log("btn is clicked");
 		console.log(products);
-		setMessage("Produkten är tillagd"); 
-		
+		setMessage("Produkten är tillagd");
 	}
-	
-	function handleDeleteForm(){
+
+	function handleDeleteForm() {
 		setTitle("");
 		setProductUrl("");
 		setDescription("");
 		setProductPrice("");
-		setMessage(""); 
+		setMessage("");
 	}
 
 	function handleSubmit(event) {
@@ -102,10 +112,11 @@ const AdminUser = () => {
 		navigate("/admin");
 	}
 
-
-	function handleDeleteUser() {
+	function handleDeleteUser(id) {
 		console.log("denna ska ta bort user");
+		setUsers(users.filter((user) => user.id !== id));
 	}
+
 	return (
 		<>
 			<section className="Admin-body">
@@ -123,7 +134,7 @@ const AdminUser = () => {
 							<div className="deleteUserBtn-container">
 								<button
 									className="deleteUser"
-									onClick={handleDeleteUser()}
+									onClick={() => handleDeleteUser(user.id)}
 								>
 									Ta bort
 								</button>
@@ -144,15 +155,16 @@ const AdminUser = () => {
 							onChange={handleTitleChange}
 							onBlur={handleBlur}
 							className={
-								isFieldTouched &&
-								(isFieldEmpty || !!titleIsValid)
-									? "invalid"
+								isFieldTouched
+									? isFieldEmpty || !!titleIsInValid
+										? "invalid"
+										: titleIsValid
 									: ""
 							}
 						/>
-						{isFieldTouched && !!titleIsValid && (
+						{isFieldTouched && !!titleIsInValid && (
 							<span className="error-message">
-								{titleIsValid}
+								{titleIsInValid}
 							</span>
 						)}
 					</label>
@@ -170,7 +182,7 @@ const AdminUser = () => {
 						)}
 					</label>
 
-					{/* Produkt BESKRIVNING */}
+					{/* BESKRIVNING  */}
 					<label htmlFor="">
 						<p className="text">Produkt beskrivning</p>
 						<textarea
@@ -184,15 +196,16 @@ const AdminUser = () => {
 							onChange={handleDescriptionChange}
 							onBlur={handleBlur}
 							className={
-								isFieldTouched &&
-								(isFieldEmpty || !!descriptionIsValid)
-									? "invalid"
+								isFieldTouched
+									? isFieldEmpty || !!descriptionIsInvalid
+										? "Isinvalid"
+										: descriptionIsValid
 									: ""
 							}
 						/>
-						{isFieldTouched && !!descriptionIsValid && (
+						{isFieldTouched && !!descriptionIsInvalid && (
 							<span className="error-message">
-								{descriptionIsValid}
+								{descriptionIsInvalid}
 							</span>
 						)}
 					</label>
@@ -216,17 +229,18 @@ const AdminUser = () => {
 					</button>
 					<p className="message">{message}</p>
 					<div className="formbtns">
-					<button className="deleteForm">
-						<Link to="/admin/products">Gå till Admin Produkt</Link>
-					</button>
-					<button
-						type="submit"
-						className="deleteForm"
-						onClick={handleDeleteForm}
-					>
-					
-						Rensa formulär
-					</button>
+						<button className="deleteForm">
+							<Link to="/admin/products">
+								Gå till Admin Produkt
+							</Link>
+						</button>
+						<button
+							type="submit"
+							className="deleteForm"
+							onClick={handleDeleteForm}
+						>
+							Rensa formulär
+						</button>
 					</div>
 				</form>
 			</section>

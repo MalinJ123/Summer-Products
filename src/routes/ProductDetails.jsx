@@ -1,14 +1,17 @@
-import React from "react";
-import { useLoaderData, useParams, Link } from "react-router-dom";
+import { useState } from "react";
+import {  Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { cartState } from "../atoms/cartState";
 
 function ProductDetails(props) {
-	// const { id } = useParams();
 	const product = props.product;
 	const [cartItems, setCartItems] = useRecoilState(cartState);
 
+	const [addProductMessage, setAddProductMessage] = useState("")
+
 	function handleAddToCart() {
+		setAddProductMessage("Produkten är tillagd");
+		handleMessage()
 		console.log(product.id);
 		const existingItem = cartItems.find(
 			(cartItem) => cartItem.id === product.id
@@ -24,9 +27,11 @@ function ProductDetails(props) {
 			console.log("updated item with new amount");
 		} else {
 			setCartItems([...cartItems, { ...product, amount: 1 }]);
-			console.log("added new item");
-		}
-	}
+		   console.log("added new item");
+		
+    
+  }
+}
 	if (!product) {
 		return (
 			<section>
@@ -37,6 +42,12 @@ function ProductDetails(props) {
 				</p>
 			</section>
 		);
+	}
+
+	function handleMessage(){
+		setTimeout(() => {
+			setAddProductMessage("");
+		 }, 1000);
 	}
 
 	return (
@@ -68,6 +79,8 @@ function ProductDetails(props) {
 					>
 						Lägg till
 					</button>
+					<p className="message">{addProductMessage}</p>
+					
 				</div>
 			</section>
 		</>
