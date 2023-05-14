@@ -47,13 +47,13 @@ border: 2px solid green;
 font-size: 28px;
 }
 
-.home-pic {
+/* .home-pic {
 	width: 100%;
 
 	object-fit: cover;
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+} */
 
 .content {
 	background-color: antiquewhite;

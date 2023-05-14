@@ -1,22 +1,32 @@
-
-.Admin-body{
-	/* border: 2px solid hotpink; */
+.Admin-body {
+	flex-direction: column;
 	display: flex;
-/* align-items: center; */
-	/* flex-direction: column; */
-	justify-content: center;
+	align-items: center;
+	background-image: url("../assets/summer.jpg");
+	background-size: cover;
+	object-fit: cover;
+}
+.title-container {
+	margin-top: 4em;
+}
+.AdminUsers {
+	margin: 4em 0;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	width: 40%;
+	background-color: rgba(149, 179, 220, 0.732);
 }
 
-.title-container{
-	margin-top:2em;
-	
+.UserContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 0.3em;
+	background-color: rgba(222, 227, 226, 0.689);
 }
 
 .admin-container {
-	position: absolute;
-	top: 60%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,20 +35,16 @@
 	width: 100%;
 	height: 70vh;
 	border: 2px solid rgb(114, 114, 114);
-	background-color: rgba(222, 227, 226, 0.689);
-	/* opacity: 0.5; */
+	background-color: rgba(102, 215, 221, 0.796);
 	border-radius: 10%;
 }
-
-.AdminForm-title{
-	font-size: 132%;
-	margin: 2em 0 2em 0; 
+.title {
+	display: flex;
+	justify-content: center;
 }
-
-.adminFormBtn {
-	margin-bottom:3em; 
-	width: 60%;
-	cursor: pointer;
+.AdminForm-title {
+	font-size: 132%;
+	margin: 2em 0 2em 0;
 }
 
 .invalid {
@@ -48,33 +54,48 @@
 	border: 3px solid rgb(40, 219, 67);
 }
 
-.AdminUrl{
+.AdminUrl {
 	width: 10em;
 	display: flex;
 }
 
- textarea{
+textarea {
 	padding: 0.2em 0 0 0.3em;
- }
- 
- .AdminUsers{
-	display: flex;
-	margin-left: 3em; 
-	position: absolute;
-	left: 5%;
-	top: 10%;
+}
 
- }
-  .deleteUserBtn-container{
+.deleteUserBtn-container {
 	align-items: center;
 	display: flex;
 	padding-left: 1em;
- }
+}
 
- .deleteUser{
-width: 6em;
-height: 2em;
+.deleteUser {
+	width: 6em;
+	height: 2em;
+}
 
+.admin-button {
+	transition: 0.5s all linear;
+	/* other styles here */
+}
 
- }
+.admin-button:hover {
+	transform: scale(1.2);
+}
+.adminFormBtn {
+	margin-bottom: 3em;
+	width: 60%;
+	cursor: pointer;
+	transition: 0.5s all linear;
+}
 
+@media screen and (max-width: 768px) {
+	.AdminUsers {
+		margin: 4em 0;
+		display: flex;
+		flex-direction: column;
+		border: 2px solid black;
+		width: 80%;
+		background-color: rgba(149, 179, 220, 0.732);
+	}
+}

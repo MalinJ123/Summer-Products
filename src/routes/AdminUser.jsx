@@ -90,10 +90,10 @@ const AdminUser = () => {
 		navigate("/admin");
 	}
 
-	function showGetUser(getUser) {
-		console.log("Detta är getUsers i funktionen showGetUser", getUser);
-		console.log("Underfined:", users);
-	}
+	// function showGetUser(getUser) {
+	// 	console.log("Detta är getUsers i funktionen showGetUser", getUser);
+	// 	console.log("Underfined:", users);
+	// }
 
 	function handleDeleteUser() {
 		console.log("denna ska ta bort user");
@@ -108,15 +108,11 @@ const AdminUser = () => {
 					</button>
 				</div>
 				<div className="AdminUsers">
+					<p className="title">Alla Användare:</p>
 					{users.map((user) => (
-						<div key={user.id}>
-							<p className="title">Alla Användare:</p>
-							<p className="">Användare: {user.username}</p>
+						<div className="UserContainer" key={user.id}>
+							<p className="">{user.username}</p>
 							<div className="deleteUserBtn-container">
-								<button onClick={showGetUser}>
-									showGetUser
-								</button>
-
 								<button
 									className="deleteUser"
 									onClick={handleDeleteUser()}
@@ -132,7 +128,7 @@ const AdminUser = () => {
 				<form className="admin-container" onSubmit={handleSubmit}>
 					<h2 className="AdminForm-title">Lägg till Produkter</h2>
 					<label className="input-text" htmlFor="">
-						<p className="text">Produkt Titel</p>
+						<p className="text">Produkt namn</p>
 						<input
 							type="text"
 							placeholder="Produkt namn"
@@ -215,6 +211,8 @@ const AdminUser = () => {
 						<Link to="/admin/products">Gå till Admin Produkt</Link>
 					</button>
 				</form>
+
+				
 			</section>
 		</>
 	);
