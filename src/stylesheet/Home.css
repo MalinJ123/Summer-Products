@@ -1,6 +1,7 @@
 * {
 	box-sizing: border-box;
 	margin: 0;
+	font-family: 'Wix Madefor Text', sans-serif;
 }
 
 .CartIcon {
@@ -22,7 +23,7 @@
 .link {
 	color: white;
 	text-decoration: none;
-	margin: 2em;
+	margin: 1em;
 }
 .link:hover {
 	color: rgb(70, 246, 246);
@@ -42,10 +43,10 @@
 }
 
 
-.material-symbols-outlined:nth-of-type(4){
+/* .material-symbols-outlined:nth-of-type(4){
 border: 2px solid green;
 font-size: 28px;
-}
+} */
 
 /* .home-pic {
 	width: 100%;
@@ -62,12 +63,12 @@ font-size: 28px;
 	align-items: center;
 	position: absolute;
 	top: 30%;
-	left: 34%;
+	left: 20%;
 	/* transform: translate(-50%, -50%); */
 	border-radius: 10%;
 	max-width: 90%;
 	padding: 1em;
-	width: 23em;
+	width: 60%;
 }
 
 .card{
@@ -108,6 +109,7 @@ font-size: 28px;
 	.gone{
 		display: none;
 	}
+	
 }
 
 /* -------------- END MAIN-CONTENT --------------- */

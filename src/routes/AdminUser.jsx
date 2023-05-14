@@ -102,10 +102,6 @@ const AdminUser = () => {
 		navigate("/admin");
 	}
 
-	// function showGetUser(getUser) {
-	// 	console.log("Detta är getUsers i funktionen showGetUser", getUser);
-	// 	console.log("Underfined:", users);
-	// }
 
 	function handleDeleteUser() {
 		console.log("denna ska ta bort user");

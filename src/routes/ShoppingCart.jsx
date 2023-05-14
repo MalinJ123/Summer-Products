@@ -68,7 +68,7 @@ function ShoppingCart() {
 
 	return (
 		<div className="shopping-container">
-			<h2 className="cartTitle">Shopping cart</h2>
+			<h2 className="cartTitle">Kundvagn</h2>
 			<ul className="cart-list">
 				{cartItems.map((item, index) => (
 					<li className="list-item" key={index}>
@@ -97,16 +97,16 @@ function ShoppingCart() {
 							className="btn btn-remove"
 							onClick={() => handleRemoveAll(index)}
 						>
-							Remove all
+							Ta bort alla
 						</button>
 					</li>
 				))}
 			</ul>
-			<p className="Totalprice">Total price: {totalPrice} Kr</p>
+			<p className="Totalprice">Totalt: {totalPrice} Kr</p>
 
-			<button className="detail-button">Confirm</button>
+			<button className="detail-button">Gå till betalning</button>
 			<button className="detail-button" onClick={handleClearCart}>
-				Empty cart
+				Töm kundvagn
 			</button>
 		</div>
 	);
