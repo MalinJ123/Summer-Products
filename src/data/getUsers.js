@@ -6,7 +6,7 @@ async function getUsers(oneUser) {
 
 	const response = await fetch(url + '?action=get-users&shopid=' + shopId)
 	const data = await response.json()
-	console.log('response from API: ', data)
+	// console.log('response from API: ', data)
 
 
 	return data

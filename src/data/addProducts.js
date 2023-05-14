@@ -189,4 +189,4 @@ export default addProduct;
 //Npm run get: Hämta alla produkter -> lägg i Products.jsx
 
 // Kommentera bort när ej används
-addAllTheProducts();
+// addAllTheProducts();

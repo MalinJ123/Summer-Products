@@ -29,6 +29,8 @@ const AdminUser = () => {
 	const [description, setDescription] = useState("");
 	const [descriptionIsValid, setDescriptionIsValid] = useState("");
 
+	const [message, setMessage] = useState(""); // new state variable
+
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -71,6 +73,16 @@ const AdminUser = () => {
 	function handleClick() {
 		console.log("btn is clicked");
 		console.log(products);
+		setMessage("Produkten är tillagd"); 
+		
+	}
+	
+	function handleDeleteForm(){
+		setTitle("");
+		setProductUrl("");
+		setDescription("");
+		setProductPrice("");
+		setMessage(""); 
 	}
 
 	function handleSubmit(event) {
@@ -102,7 +114,7 @@ const AdminUser = () => {
 		<>
 			<section className="Admin-body">
 				<div className="title-container">
-					<h2>AdminUser</h2>
+					<h2 className="AdminForm-title">AdminUser</h2>
 					<button className="admin-button" onClick={handleLogout}>
 						logga ut
 					</button>
@@ -150,7 +162,7 @@ const AdminUser = () => {
 					</label>
 					{/* LÄÄÄNK BILD URL */}
 					<label htmlFor="">
-						<p className="text">Bild adress</p>
+						<p className="text">Bildadress</p>
 						<input
 							placeholder=" https://"
 							type="text"
@@ -206,13 +218,21 @@ const AdminUser = () => {
 					>
 						Lägg till
 					</button>
-
-					<button className="admin-details">
+					<p className="message">{message}</p>
+					<div className="formbtns">
+					<button className="deleteForm">
 						<Link to="/admin/products">Gå till Admin Produkt</Link>
 					</button>
+					<button
+						type="submit"
+						className="deleteForm"
+						onClick={handleDeleteForm}
+					>
+					
+						Rensa formulär
+					</button>
+					</div>
 				</form>
-
-				
 			</section>
 		</>
 	);
