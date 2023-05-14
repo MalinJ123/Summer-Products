@@ -57,10 +57,10 @@ const AdminUser = () => {
 		setIsFieldTouched(true);
 
 		if (title.trim() === "") {
-			setTitleIsInValid("Title is required");
+			setTitleIsInValid("Du måste ha en Titel");
 			setTitleIsValid("");
 		} else if (title.length < 5) {
-			setTitleIsInValid("At least 5 characters long");
+			setTitleIsInValid("Minst 5 bokstäver");
 			setTitleIsValid("");
 		} else {
 			setTitleIsValid("valid");
@@ -68,11 +68,11 @@ const AdminUser = () => {
 		}
 
 		if (description.trim() === "") {
-			setDescriptionIsInvalid("Description is required");
+			setDescriptionIsInvalid("Beskrivning är ett krav");
 			setDescriptionIsValid("");
 		} else if (description.length < 10) {
 			setDescriptionIsInvalid(
-				"At least 10 characters long"
+				"Minst 10 bokstäver"
 			);
 			setDescriptionIsValid("");
 		} else {
@@ -121,7 +121,7 @@ const AdminUser = () => {
 		<>
 			<section className="Admin-body">
 				<div className="title-container">
-					<h2 className="AdminForm-title">AdminUser</h2>
+					<h2 className="AdminForm-title">Admin Sida</h2>
 					<button className="admin-button" onClick={handleLogout}>
 						logga ut
 					</button>
