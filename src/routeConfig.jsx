@@ -7,7 +7,7 @@ import ErrorPage from "./routes/ErrorPage.jsx";
 import ShoppingCart from "./routes/ShoppingCart.jsx";
 import AdminProducts from "./routes/AdminProducts.jsx";
 import AdminLogin from "./routes/AdminLogin.jsx";
-import AdminUser from "./routes/AdminUser.jsx";
+import AdminUser, { loader as UsersLoader } from "./routes/AdminUser.jsx";
 const router = createHashRouter([
 	{
 		path: "/",
@@ -40,6 +40,7 @@ const router = createHashRouter([
 			{
 				path: "admin/user",
 				element: <AdminUser />,
+				loader: UsersLoader,
 			},
 			{
 				path: "admin/products",

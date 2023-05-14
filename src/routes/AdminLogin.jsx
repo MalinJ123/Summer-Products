@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import addUser from "../data/addProducts.js";
+import addUser from "../data/addUser.js";
+import verifyUser from "../data/verifyUser.js";
 import "../stylesheet/AdminLogin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -42,8 +43,7 @@ const AdminLogin = () => {
 				navigate("/admin/user");
 			}
 		}
-	}	
-
+	}
 
 	function setFormLogin() {
 		setForm("login");
@@ -73,14 +73,21 @@ const AdminLogin = () => {
 		}
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault(); //förhindra sidan att laddas om vid submit
-		if (formIsValid) {
-			console.log("Admin logged in successfully");
-			// navigate
+	const handleLogin = async (e) => {
+		e.preventDefault();
+
+		const status = await verifyUser({ shopid: shopId, username, password });
+
+		console.log(status);
+
+		if (status.loggedIn === "success") {
+			// allow login
+			console.log("allowed");
+			navigate("/admin/user");
 		} else {
-			console.log("Admin login failed");
-			// visa felmeddelande för användaren
+			// prevent login and display error message
+			console.log("not allowed");
+			
 		}
 	};
 
@@ -89,7 +96,7 @@ const AdminLogin = () => {
 			{form === "login" ? (
 				<form
 					className="form-container"
-					onSubmit={(e) => handleSubmit(e)}
+					onSubmit={(e) => handleLogin(e)}
 				>
 					<div className="close-button">
 						<Link className="" to="/">
@@ -156,18 +163,7 @@ const AdminLogin = () => {
 							{passwordIsValid}
 						</label>
 					</div>
-					<button
-						type="submit"
-						className="admin-button"
-						onClick={
-							formIsValid
-								? () => {
-										navigate("/admin/user");
-								  }
-								: null
-						}
-						disabled={!formIsValid}
-					>
+					<button type="submit" className="admin-button">
 						Logga in
 					</button>
 				</form>
@@ -267,7 +263,7 @@ const AdminLogin = () => {
 								</div>
 							) : registerRepeatPassword !== registerPassword ? (
 								<div className="error-messages">
-									Lösenordet matchar inte 
+									Lösenordet matchar inte
 								</div>
 							) : null}
 						</label>

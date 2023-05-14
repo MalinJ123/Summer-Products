@@ -1,6 +1,7 @@
+import { url } from "./constants";
+
 async function addUser(oneUser) {
 	console.log("adding user...");
-	oneUser.shopid = shopId
 	const options = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
