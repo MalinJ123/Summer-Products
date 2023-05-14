@@ -2,30 +2,33 @@ import paradise from "../assets/paradise.jpg";
 import "../stylesheet/Home.css";
 import Footer from "../components/Footer.jsx";
 
-
-
 const Home = () => {
 	return (
-		<>
-			<img
-				className="home-pic"
-				src={paradise}
-				alt="En härlig paradis bild"
-			/>
+		<div className="home-container">
 			<div className="content">
-				<h2 className="title"> Home </h2>
-				<p className="description">
-					survived not only five centuries, but also the leap into
-					electronic typesetting, remaining essentially unchanged. It
-					was popularised in the 1960s with the release of Letraset
-					sheets containing Lorem Ipsum passages, and more recently
-					with desktop publishing software like Aldus PageMaker
-					including versions of Lorem Ipsu
+				<h2 className="title"> VÄLKOMEN TILL OCEAN </h2>
+				<div className="home">
+	<p className="description">
+					Din partner för säker och lyckad
+					dykning! Vi är stolta över att erbjuda de bästa produkterna
+					för dykare på alla nivåer.
 				</p>
+				</div>
+				<div className="home">
+
+				<p className="description card">
+					Att köpa dyksaker kan verka som en stor investering i
+					början, men det är verkligen värt det. När du har din egen
+					utrustning kan du anpassa den efter dina specifika behov och
+					preferenser.
+				</p>
+				</div>
+
+			
 			</div>
-	
-			<Footer/>
-		</>
+
+			<Footer />
+		</div>
 	);
 };
 
